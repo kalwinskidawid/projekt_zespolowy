@@ -57,3 +57,10 @@ Tutorial GitHub: [klik](https://stormit.pl/git/)
 >git add nazwaPlikówKtóreMiałyKonflikt\
 >git commit
 8. test 
+
+## 🧠Autorzy
+
+- [@KoniecznyWojciech](https://www.github.com/WojciechKonieczny)
+- [@SzyszkaKamil](https://www.github.com/SzyszkaKamil)
+- [@KalwinskiDawid](https://www.github.com/kalwinskidawid)
+- [@Pasozyt](https://www.github.com/Pasozyt)
