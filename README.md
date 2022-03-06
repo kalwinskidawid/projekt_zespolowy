@@ -11,44 +11,44 @@
 
 <h6>Tworzenie / edycja nowego feature, gdy gałąź do niej już istnieje</h6>
 1. Pobieramy najnowszą wersję gałęzi feature:
-> git checkout feature/nazwaGałęzi\
-> git pull
+>git checkout feature/nazwaGałęzi\
+>git pull
 2. Implementujemy funkcjonalności z dobrze opisanymi commitami:
-> git add nazwyPlików lub git add .\
-> git commit -m "wiadomość opisująca zmiany"\
-> git push
+>git add nazwyPlików lub git add .\
+>git commit -m "wiadomość opisująca zmiany"\
+>git push
 4. Jeśli feature działa poprawnie i nadaje się na produkcję, to mergujemy ją do mastera:
-> git checkout feature/nazwaGałęzi\
-> git pull\
-> git checkout master\
-> git pull\
-> git merge feature/nazwaGałęzi\
+>git checkout feature/nazwaGałęzi\
+>git pull\
+>git checkout master\
+>git pull\
+>git merge feature/nazwaGałęzi\
 5. Wyświetlenie konfliktów:
-> git status
+>git status
 6. Wchodzimy w pliki, które pokazał git status i naprawiamy konflikty
 7. Po rozwiązaniu konfliktów:
-> git add nazwaPlikówKtóreMiałyKonflikt\
-> git commit
+>git add nazwaPlikówKtóreMiałyKonflikt\
+>git commit
 
 <h6>Tworzenie nowego feature, gdy nie istnieje do niej gałąź</h6>
 1. Pobieramy najnowszą wersję mastera:
-> git checkout master\
-> git pull
+>git checkout master\
+>git pull
 2. Tworzymy nową gałąź: 
-> git checkout -b feature/nazwaFunkcjonalności
+>git checkout -b feature/nazwaFunkcjonalności
 3. Implementujemy funkcjonalności z dobrze opisanymi commitami:
-> git add nazwyPlików lub git add .\
-> git commit -m "wiadomość opisująca zmiany"\
-> git push
+>git add nazwyPlików lub git add .\
+>git commit -m "wiadomość opisująca zmiany"\
+>git push
 4. Jeśli feature działa poprawnie i nadaje się na produkcję, to mergujemy ją do mastera:
-> git checkout feature/nazwaGałęzi\
-> git pull\
-> git checkout master\
-> git pull\
-> git merge feature/nazwaGałęzi\
+>git checkout feature/nazwaGałęzi\
+>git pull\
+>git checkout master\
+>git pull\
+>git merge feature/nazwaGałęzi\
 5. Wyświetlenie konfliktów:
-> git status
+>git status
 6. Wchodzimy w pliki, które pokazał git status i naprawiamy konflikty
 7. Po rozwiązaniu konfliktów:
-> git add nazwaPlikówKtóreMiałyKonflikt\
-> git commit
+>git add nazwaPlikówKtóreMiałyKonflikt\
+>git commit
