@@ -56,3 +56,4 @@ Tutorial GitHub: [klik](https://stormit.pl/git/)
 7. Po rozwiązaniu konfliktów:
 >git add nazwaPlikówKtóreMiałyKonflikt\
 >git commit
+8. test 
