@@ -11,7 +11,9 @@
         "khadegd/laravel-breeze-bootstrap": "dev-main",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "twbs/bootstrap": "^5.1",
+        "twbs/bootstrap-icons": "^1.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
