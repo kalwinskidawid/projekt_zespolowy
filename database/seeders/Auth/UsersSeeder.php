@@ -23,6 +23,8 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        $user->markEmailAsVerified();
+
         $user = User::create([
             'name' => 'User Testowy',
             'email' => 'user@local',
@@ -30,11 +32,15 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        $user->markEmailAsVerified();
+
         $user = User::create([
            'name' => 'wkonieczny',
            'email' => 'wojciech9929@gmail.com',
             'email_verified_at'=>Carbon::now()->format('Y-m-d H:i:s'),
             'password' => Hash::make('zaq1@WSX')
         ]);
+
+        $user->markEmailAsVerified();
     }
 }
