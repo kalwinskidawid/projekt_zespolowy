@@ -16,7 +16,8 @@
             <div>
                 <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="" type="text" name="name" :value="old('name')" required autofocus />
+                <x-input id="name" class="" type="text" name="name" :value="old('name')" required
+                    autofocus />
             </div>
 
             <!-- Email Address -->
@@ -30,19 +31,26 @@
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class=""
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+                <x-input id="password" class="" type="password" name="password" required
+                    autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class=""
-                                type="password"
-                                name="password_confirmation" required />
+                <x-input id="password_confirmation" class="" type="password" name="password_confirmation"
+                    required />
+            </div>
+            <div class="mt-4">
+                <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" value="1" name="type_id" id="btnradio1" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">Pracownik</label>
+
+                    <input type="radio" class="btn-check" value="2" name="type_id" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">Pracodawca</label>
+                </div>
             </div>
 
             <div class="d-flex justify-content-end mt-4">
