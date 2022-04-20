@@ -44,7 +44,7 @@ Tutorial GitHub: [klik](https://stormit.pl/git/)
 3. Implementujemy funkcjonalności z dobrze opisanymi commitami:
 >git add nazwyPlików lub git add .\
 >git commit -m "wiadomość opisująca zmiany"\
->git push
+>git push\
 4. Jeśli feature działa poprawnie i nadaje się na produkcję, to mergujemy ją do mastera:
 >git checkout feature/nazwaGałęzi\
 >git pull\
@@ -56,8 +56,8 @@ Tutorial GitHub: [klik](https://stormit.pl/git/)
 6. Wchodzimy w pliki, które pokazał git status i naprawiamy konflikty
 7. Po rozwiązaniu konfliktów:
 >git add nazwaPlikówKtóreMiałyKonflikt\
->git commit
->git push
+>git commit\
+>git push\
 8. test test
 
 ## 🧠Autorzy
