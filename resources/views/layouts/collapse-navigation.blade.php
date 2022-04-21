@@ -16,10 +16,18 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body d-flex flex-column ">
+
       <ul class="nav nav-pills flex-column">
+
           <li>
               <x-menu-link :href="route('technologies.index')">
                   <i class="bi bi-braces-asterisk pe-2"></i>{{ __('translations.menu.technologies') }}
+              </x-menu-link>
+          </li>
+
+          <li>
+              <x-menu-link :href="route('levels.index')">
+                  <i class="bi bi-braces-asterisk pe-2"></i>{{ __('translations.menu.levels') }}
               </x-menu-link>
           </li>
       </ul>

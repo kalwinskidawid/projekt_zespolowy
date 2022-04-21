@@ -75,7 +75,7 @@ class TechnologyController extends Controller
         $technology->delete();
 
         return redirect()->route('technologies.index')->with( 'success', __('translations.toasts.technologies.success.destroy', [
-            'technology' => $technology->name
+            'name' => $technology->name
         ]));
     }
 

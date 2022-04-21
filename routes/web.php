@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TechnologyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,16 +46,39 @@ Route::name('technologies.')->prefix('technologies')->group( function() {
     Route::post('', [TechnologyController::class, 'store'])->name('store');
 
     // odpowiedzialny za wyswietlanie formularza od edycji
-    Route::get('{technology}/edit', [TechnologyController::class, 'edit'])->where('item', '[0-9]+')->name('edit');
+    Route::get('{technology}/edit', [TechnologyController::class, 'edit'])->where('technology', '[0-9]+')->name('edit');
 
     // odpowiedzialny za przesylanie zedytowanego formularza do bazy
-    Route::patch('{technology}/edit', [TechnologyController::class, 'update'])->where('item', '[0-9]+')->name('update');
+    Route::patch('{technology}/edit', [TechnologyController::class, 'update'])->where('technology', '[0-9]+')->name('update');
 
     //usuwanie
-    Route::delete('{technology}', [TechnologyController::class, 'destroy'])->where('item', '[0-9]+')->name('destroy');
+    Route::delete('{technology}', [TechnologyController::class, 'destroy'])->where('technology', '[0-9]+')->name('destroy');
 
     // przywracanie
     Route::put('{id}/restore', [TechnologyController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
+});
+
+// routing dla poziomów
+Route::name('levels.')->prefix('levels')->group( function() {
+    Route::get('', [LevelController::class, 'index'])->name('index');
+
+    // odpowiedzialny za wyswietlanie formularza dodawania
+    Route::get('create', [LevelController::class, 'create'])->name('create');
+
+    // odpowiedzialny za dodawanie nowych wierszy do bazy
+    Route::post('', [LevelController::class, 'store'])->name('store');
+
+    // odpowiedzialny za wyswietlanie formularza od edycji
+    Route::get('{level}/edit', [LevelController::class, 'edit'])->where('level', '[0-9]+')->name('edit');
+
+    // odpowiedzialny za przesylanie zedytowanego formularza do bazy
+    Route::patch('{level}/edit', [LevelController::class, 'update'])->where('level', '[0-9]+')->name('update');
+
+    //usuwanie
+    Route::delete('{level}', [LevelController::class, 'destroy'])->where('level', '[0-9]+')->name('destroy');
+
+    // przywracanie
+    Route::put('{id}/restore', [LevelController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
 });
 
 

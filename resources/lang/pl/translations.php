@@ -4,6 +4,8 @@ return [
 
     'headers' => [
         'technologies' => 'Technologie',
+        'levels' => 'Poziomy',
+        'certificates' => 'Certyfikaty',
     ],
 
     'labels' => [
@@ -30,12 +32,40 @@ return [
                 'restore' => 'Technologia :name została przywrócona'
             ]
         ],
+
+        'levels' => [
+            'success' => [
+                'stored' => 'Dodano poziom :name',
+                'updated' => 'Zaktualizowano poziom :name',
+                'nothing-changed' => 'Dane poziomu :name nie zmieniły się',
+                'destroy' => 'Poziom :name została usunięty',
+                'restore' => 'Poziom :name została przywrócony'
+            ]
+        ],
+
+        'certificates' => [
+            'success' => [
+                'stored' => 'Dodano certyfikat :name',
+                'updated' => 'Zaktualizowano certyfikat :name',
+                'nothing-changed' => 'Dane certyfikatu :name nie zmieniły się',
+                'destroy' => 'Certyfikat :name został usunięty',
+                'restore' => 'Certyfikat :name został przywrócony'
+            ]
+        ],
     ],
 
     'validation' => [
 
         'technology' => [
             'name_unique' => 'Istnieje już technologia, dla którego :attribute ma podaną wartość',
+        ],
+
+        'level' => [
+            'name_unique' => 'Istnieje już poziom, dla którego :attribute ma podaną wartość',
+        ],
+
+        'certificates' => [
+            'name_unique' => 'Istnieje już certyfikat, dla którego :attribute ma podaną wartość',
         ],
 
     ],
@@ -65,6 +95,8 @@ return [
         'settings' => 'Ustawienia',
         'logout' => 'Wyloguj',
         'technologies' => 'Technologie',
+        'levels' => 'Poziomy',
+        'certificates' => 'Certyfikaty',
     ]
 
 ];
