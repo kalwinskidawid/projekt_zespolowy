@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TechnologyController;
 use Illuminate\Support\Facades\Auth;
@@ -81,6 +82,28 @@ Route::name('levels.')->prefix('levels')->group( function() {
     Route::put('{id}/restore', [LevelController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
 });
 
+// routing dla języków
+Route::name('languages.')->prefix('languages')->group( function() {
+    Route::get('', [LanguageController::class, 'index'])->name('index');
+
+    // odpowiedzialny za wyswietlanie formularza dodawania
+    Route::get('create', [LanguageController::class, 'create'])->name('create');
+
+    // odpowiedzialny za dodawanie nowych wierszy do bazy
+    Route::post('', [LanguageController::class, 'store'])->name('store');
+
+    // odpowiedzialny za wyswietlanie formularza od edycji
+    Route::get('{language}/edit', [LanguageController::class, 'edit'])->where('language', '[0-9]+')->name('edit');
+
+    // odpowiedzialny za przesylanie zedytowanego formularza do bazy
+    Route::patch('{language}/edit', [LanguageController::class, 'update'])->where('language', '[0-9]+')->name('update');
+
+    //usuwanie
+    Route::delete('{language}', [LanguageController::class, 'destroy'])->where('language', '[0-9]+')->name('destroy');
+
+    // przywracanie
+    Route::put('{id}/restore', [LanguageController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
+});
 
 
 require __DIR__.'/auth.php';

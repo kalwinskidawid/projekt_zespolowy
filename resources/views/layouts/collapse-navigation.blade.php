@@ -26,6 +26,12 @@
           </li>
 
           <li>
+              <x-menu-link :href="route('languages.index')">
+                  <i class="bi bi-translate pe-2"></i>{{ __('translations.menu.languages') }}
+              </x-menu-link>
+          </li>
+
+          <li>
               <x-menu-link :href="route('levels.index')">
                   <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.levels') }}
               </x-menu-link>

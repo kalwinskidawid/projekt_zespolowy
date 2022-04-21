@@ -6,6 +6,7 @@ return [
         'technologies' => 'Technologie',
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
+        'languages' => 'Języki obce',
     ],
 
     'labels' => [
@@ -52,6 +53,16 @@ return [
                 'restore' => 'Certyfikat :name został przywrócony'
             ]
         ],
+
+        'languages' => [
+            'success' => [
+                'stored' => 'Dodano język :name',
+                'updated' => 'Zaktualizowano język :name',
+                'nothing-changed' => 'Dane języka :name nie zmieniły się',
+                'destroy' => 'Język :name został usunięty',
+                'restore' => 'Język :name został przywrócony'
+            ]
+        ],
     ],
 
     'validation' => [
@@ -66,6 +77,10 @@ return [
 
         'certificates' => [
             'name_unique' => 'Istnieje już certyfikat, dla którego :attribute ma podaną wartość',
+        ],
+
+        'languages' => [
+            'name_unique' => 'Istnieje już język, dla którego :attribute ma podaną wartość',
         ],
 
     ],
@@ -97,6 +112,7 @@ return [
         'technologies' => 'Technologie',
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
+        'languages' => 'Języki obce',
     ]
 
 ];
