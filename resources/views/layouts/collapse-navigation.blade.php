@@ -27,7 +27,7 @@
 
           <li>
               <x-menu-link :href="route('levels.index')">
-                  <i class="bi bi-braces-asterisk pe-2"></i>{{ __('translations.menu.levels') }}
+                  <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.levels') }}
               </x-menu-link>
           </li>
       </ul>
