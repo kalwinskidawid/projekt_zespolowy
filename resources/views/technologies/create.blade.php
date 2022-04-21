@@ -5,6 +5,14 @@
         </h2>
     </x-slot>
 
+    <x-slot name="styles">
+        <link rel="stylesheet" href="{{ asset('css/technologies.css')  }}">
+    </x-slot>
+
+    <x-slot name="scripts">
+        <script src="{{ asset('js/technologies.js')  }}"></script>
+    </x-slot>
+
     <div class="container">
         <h1>{{ __('translations.headers.technologies')  }}</h1>
 
