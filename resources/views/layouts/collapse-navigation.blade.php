@@ -36,6 +36,12 @@
                   <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.levels') }}
               </x-menu-link>
           </li>
+
+          <li>
+              <x-menu-link :href="route('certificates.index')">
+                  <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.certificates') }}
+              </x-menu-link>
+          </li>
       </ul>
 
     <div class="mt-auto p-2 border-top">

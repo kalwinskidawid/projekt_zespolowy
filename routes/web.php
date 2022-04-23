@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\CertificateController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -104,6 +105,31 @@ Route::name('languages.')->prefix('languages')->group( function() {
     // przywracanie
     Route::put('{id}/restore', [LanguageController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
 });
+
+// Routing dla certyfikatów
+Route::name('certificates.')->prefix('certificates')->group( function() {
+    Route::get('', [CertificateController::class, 'index'])->name('index');
+
+    // odpowiedzialny za wyswietlanie formularza dodawania
+    Route::get('create', [CertificateController::class, 'create'])->name('create');
+
+    // odpowiedzialny za dodawanie nowych wierszy do bazy
+    Route::post('', [CertificateController::class, 'store'])->name('store');
+
+    // odpowiedzialny za wyswietlanie formularza od edycji
+    Route::get('{certificate}/edit', [CertificateController::class, 'edit'])->where('certificate', '[0-9]+')->name('edit');
+
+    // odpowiedzialny za przesylanie zedytowanego formularza do bazy
+    Route::patch('{certificate}/edit', [CertificateController::class, 'update'])->where('certificate', '[0-9]+')->name('update');
+
+    //usuwanie
+    Route::delete('{certificate}', [CertificateController::class, 'destroy'])->where('certificate', '[0-9]+')->name('destroy');
+
+    // przywracanie
+    Route::put('{id}/restore', [CertificateController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
+});
+
+
 
 
 require __DIR__.'/auth.php';

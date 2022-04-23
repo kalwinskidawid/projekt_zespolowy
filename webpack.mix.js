@@ -19,6 +19,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/levels.js', 'public/js')
     .sass('resources/sass/languages.scss', 'public/css')
     .js('resources/js/languages.js', 'public/js')
+    .sass('resources/sass/certificates.scss','public/css')
+    .js('resources/js/certificates.js', 'public/js')
     .copy('resources/views/vendor/datatables/i18n/pl.json', 'public/vendor/datatables/i18n')
     .sourceMaps()
     .extract();

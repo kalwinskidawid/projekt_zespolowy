@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TechnologySeeder::class);
         $this->call(LevelSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(CertificateSeeder::class);
 
     }
 }
