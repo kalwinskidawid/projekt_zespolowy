@@ -63,6 +63,16 @@ return [
                 'restore' => 'Język :name został przywrócony'
             ]
         ],
+
+        'careers' => [
+            'success' => [
+                'stored' => 'Dodano karierę zawodową',
+                'updated' => 'Zaktualizowano karierę zawodową',
+                'nothing-changed' => 'Dane kariery zawodowej nie zmieniły się',
+                'destroy' => 'Kariera zawodowa został usunięta',
+                'restore' => 'Kariera zawodową został przywrócona'
+            ]
+        ]
     ],
 
     'validation' => [
@@ -92,7 +102,11 @@ return [
             'created_at' => 'utworzony',
             'updated_at' => 'aktualizowany',
             'deleted_at' => 'usunięty',
-        ],
+            'start_date' => 'data rozpoczęcia',
+            'end_date' => 'data zakończenia',
+            'position' => 'pozycja',
+            'description' => 'opis'
+        ]
     ],
 
     'buttons' => [

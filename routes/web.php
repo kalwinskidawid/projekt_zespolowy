@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\CertificateController;
 use Illuminate\Support\Facades\Auth;
@@ -129,6 +130,10 @@ Route::name('certificates.')->prefix('certificates')->group( function() {
     Route::put('{id}/restore', [CertificateController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
 });
 
+//Routing dla profilu
+Route::name('profiles.')->prefix('profiles')->group(function() {
+    Route::get('',[ProfileController::class, 'index'])->name('index');
+});
 
 
 

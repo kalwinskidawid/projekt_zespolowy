@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -44,6 +45,17 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'type_id' => $request->type_id
+        ]);
+
+        $name = explode(" ",$request->name);
+
+        Profile::create([
+           'user_id' => $user->id,
+            'first_name'=>$name[0],
+            'surname'=>count($name)>1 ? $name[1] : null,
+            'city'=>null,
+            'portfolio'=>null,
+            'about'=>null
         ]);
 
         event(new Registered($user));
