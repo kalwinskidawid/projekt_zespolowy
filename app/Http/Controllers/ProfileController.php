@@ -30,10 +30,12 @@ class ProfileController extends Controller
     {
         $profile = Profile::where('id', '=', $id)->firstOrFail();
         $careers = Career::where('profile_id', '=', $profile->id)->get();
-
+        $skills = Skill::where('profile_id', $profile->id)->get();
+        $certificates = Certificate::where('profile_id', $profile->id)->orderBy('achievement_date', 'desc')->get();
+        $knownLanguages = KnownForeignLanguage::where('profile_id',$profile->id)->get();
 
         return view(
-            'profiles.index', compact("careers", "profile")
+            'profiles.index', compact("careers", "profile", "skills", "certificates","knownLanguages")
         );
     }
 
