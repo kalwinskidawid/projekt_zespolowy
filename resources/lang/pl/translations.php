@@ -106,6 +106,12 @@ return [
             'end_date' => 'data zakończenia',
             'position' => 'pozycja',
             'description' => 'opis'
+        ],
+        'profile' => [
+            'career' => 'kariera',
+            'skills' => 'umiejętności',
+            'languages' => 'języki',
+            'certificates' => 'certyfikaty'
         ]
     ],
 

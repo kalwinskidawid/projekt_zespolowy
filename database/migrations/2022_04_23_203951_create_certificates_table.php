@@ -15,7 +15,15 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')
+                ->references('id')
+                ->on('profiles')
+                ->onDelete('no action');
+            $table->string('name');
+            $table->date('achievement_date');
+            $table->string('link');
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
         });

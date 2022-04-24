@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Profile extends Model
 {
-
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'user_id',
         'first_name',
@@ -23,5 +25,15 @@ class Profile extends Model
     public function career()
     {
         return $this->hasMany(Career::class);
+    }
+
+    public function certificate()
+    {
+        return $this->hasMany(Certificate::class);
+    }
+
+    public function skill()
+    {
+        return $this->hasMany(Skill::class);
     }
 }

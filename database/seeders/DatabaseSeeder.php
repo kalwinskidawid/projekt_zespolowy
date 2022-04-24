@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TechnologySeeder::class);
         $this->call(LevelSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(ProfileSeeder::class);
         $this->call(CertificateSeeder::class);
+        $this->call(SkillSeeder::class);
+        $this->call(KnownForeignLanguageSeeder::class);
 
     }
 }

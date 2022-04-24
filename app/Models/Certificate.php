@@ -12,12 +12,20 @@ class Certificate extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name'
-
+        'profile_id',
+        'achievement_date',
+        'name',
+        'link',
+        'description'
     ];
 
     public function scopeWithInactive(Builder $query): Builder
     {
         return $query->withTrashed();
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
     }
 }

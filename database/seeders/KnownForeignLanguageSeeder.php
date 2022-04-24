@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\KnownForeignLanguage;
 use Illuminate\Database\Seeder;
-use App\Models\Certificate;
 
-class CertificateSeeder extends Seeder
+
+class KnownForeignLanguageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class CertificateSeeder extends Seeder
      */
     public function run()
     {
-        Certificate::factory()->count(15)->create();
+        KnownForeignLanguage::factory()->count(10)->create();
     }
 }

@@ -19,4 +19,8 @@ class Technology extends Model
     {
         return $query->withTrashed();
     }
+
+    public function skill(){
+        return $this->hasMany(Skill::class);
+    }
 }
