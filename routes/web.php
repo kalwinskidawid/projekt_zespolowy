@@ -133,6 +133,7 @@ Route::name('certificates.')->prefix('certificates')->group( function() {
 //Routing dla profilu
 Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('',[ProfileController::class, 'index'])->name('index');
+    Route::get('{id}',[ProfileController::class, 'getProfile'])->where('id', '[0-9]+')->name('getProfile');
 });
 
 

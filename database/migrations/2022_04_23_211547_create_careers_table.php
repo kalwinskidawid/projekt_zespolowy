@@ -10,7 +10,11 @@ class CreateCareersTable extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
-            $table->integer("profile_id");
+            $table->unsignedBigInteger("profile_id");
+                 $table->foreign('profile_id')
+                     ->references('id')
+                     ->on('profiles')
+                     ->onDelete('no action');
             $table->date("start_date");
             $table->date("end_date");
             $table->string("position");
