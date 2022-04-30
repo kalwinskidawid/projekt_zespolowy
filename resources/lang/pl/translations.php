@@ -7,6 +7,7 @@ return [
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
+        'school_types' => 'Rodzaje Szkół',
     ],
 
     'labels' => [
@@ -63,6 +64,16 @@ return [
                 'restore' => 'Język :name został przywrócony'
             ]
         ],
+
+        'school_types' => [
+            'success' => [
+                'stored' => 'Dodano Rodzaj szkoły :name',
+                'updated' => 'Zaktualizowano Rodzaj szkoły :name',
+                'nothing-changed' => 'Dane Rodzaju szkoły :name nie zmieniły się',
+                'destroy' => 'Rodzaj szkoły :name został usunięty',
+                'restore' => 'Rodzaj szkoły :name został przywrócony',
+            ]
+        ],
     ],
 
     'validation' => [
@@ -81,6 +92,10 @@ return [
 
         'languages' => [
             'name_unique' => 'Istnieje już język, dla którego :attribute ma podaną wartość',
+        ],
+
+        'school_types' => [
+            'name_unique' => 'Istnieje już Rodzaj szkoły, dla którego :attribute ma podaną wartość',
         ],
 
     ],
@@ -113,6 +128,8 @@ return [
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
+        'school_types' => 'Rodzaje Szkół',
+
     ]
 
 ];

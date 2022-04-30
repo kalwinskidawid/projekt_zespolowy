@@ -18,6 +18,17 @@ eval("window._ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodas
 
 /***/ }),
 
+/***/ "./resources/sass/school_types.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/school_types.scss ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9zY2hvb2xfdHlwZXMuc2Nzcy5qcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy9zY2hvb2xfdHlwZXMuc2Nzcz82NDAyIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/sass/school_types.scss\n");
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -76,7 +87,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["css/app","css/certificates","css/languages","css/levels","css/technologies","/js/vendor"], () => (__webpack_exec__("./resources/js/app.js"), __webpack_exec__("./resources/sass/app.scss"), __webpack_exec__("./resources/sass/technologies.scss"), __webpack_exec__("./resources/sass/levels.scss"), __webpack_exec__("./resources/sass/languages.scss"), __webpack_exec__("./resources/sass/certificates.scss")));
+/******/ __webpack_require__.O(0, ["css/app","css/certificates","css/languages","css/levels","css/technologies","css/school_types","/js/vendor"], () => (__webpack_exec__("./resources/js/app.js"), __webpack_exec__("./resources/sass/app.scss"), __webpack_exec__("./resources/sass/technologies.scss"), __webpack_exec__("./resources/sass/levels.scss"), __webpack_exec__("./resources/sass/languages.scss"), __webpack_exec__("./resources/sass/certificates.scss"), __webpack_exec__("./resources/sass/school_types.scss")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
