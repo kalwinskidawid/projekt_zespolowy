@@ -8,10 +8,10 @@
             }
         </style>
         {{ $styles }}
-    </x-slot>   
+    </x-slot>
 
     {{-- @include('layouts.navigation')  --}}
-    @include('layouts.collapse-navigation') 
+    @include('layouts.collapse-navigation')
     <div class="container">
     {{ $slot }}
     </div>
@@ -20,5 +20,6 @@
         {{ $scripts }}
     </x-slot>
 
-    @include('layouts.toasts') 
+   {{-- @include('layouts.toasts') --}}
+    @include('sweetalert::alert')
 </x-base-layout>

@@ -10,3 +10,6 @@ $(function() {
 
     });
 });
+
+import {sweetAlertFunction} from "./app";
+sweetAlertFunction();

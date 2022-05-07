@@ -130,6 +130,11 @@ return [
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
 
+    ],
+
+    'questions' => [
+        'delete' => 'Czy na pewno chcesz usunąć :name?',
+        'restore' => 'Czy na pewno chcesz przywrócić :name?'
     ]
 
 ];

@@ -60,8 +60,8 @@
                                             :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-danger me-2"
                                             :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
                                             icon="question"
-                                            :message="__('translations.categories.labels.destroy-question', ['name' => $level->name] )"
-                                            button-class="btn btn-danger" :button-title="__('translations.labels.destroy')">
+                                            :message="__('translations.questions.delete', ['name' => $level->name] )"
+                                            button-class="btn btn-danger" :button-title="__('translations.labels.delete')">
                                             <i class="bi bi-trash"></i>
                                             </x-confirm>
                                             @else
@@ -70,8 +70,8 @@
                                                     :confirm-text="__('translations.buttons.yes')" confirm-class="btn btn-success me-2"
                                                     :cancel-text="__('translations.buttons.no')" cancel-class="btn btn-secondary ms-2"
                                                     icon="question"
-                                                    :message="__('translations.categories.labels.restore-question', ['name' => $level->name] )"
-                                                    button-class="btn btn-success" :button-title="__('translations.categories.labels.restore')">
+                                                    :message="__('translations.questions.restore', ['name' => $level->name] )"
+                                                    button-class="btn btn-success" :button-title="__('translations.labels.restore')">
                                                     <i class="bi bi-trash"></i>
                                                     </x-confirm>
                                 @endif
