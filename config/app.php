@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * ROLE I UPRAWNIENIA
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
@@ -231,5 +235,12 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    /*
+     * ROLE W APLIKACJI
+     */
+    'admin_role' => env('ADMIN_ROLE', 'admin'),
+    'pracownik_role' => env('PRACOWNIK_ROLE', 'pracownik'),
+    'pracodawca_role' => env('PRACODAWCA_ROLE', 'pracodawca'),
 
 ];

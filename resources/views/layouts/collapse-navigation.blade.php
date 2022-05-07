@@ -19,36 +19,37 @@
 
       <ul class="nav nav-pills flex-column">
 
-          <li>
-              <x-menu-link :href="route('technologies.index')">
-                  <i class="bi bi-braces-asterisk pe-2"></i>{{ __('translations.menu.technologies') }}
-              </x-menu-link>
-          </li>
+          @role('admin')
+              <li>
+                  <x-menu-link :href="route('technologies.index')">
+                      <i class="bi bi-braces-asterisk pe-2"></i>{{ __('translations.menu.technologies') }}
+                  </x-menu-link>
+              </li>
 
-          <li>
-              <x-menu-link :href="route('languages.index')">
-                  <i class="bi bi-translate pe-2"></i>{{ __('translations.menu.languages') }}
-              </x-menu-link>
-          </li>
+              <li>
+                  <x-menu-link :href="route('languages.index')">
+                      <i class="bi bi-translate pe-2"></i>{{ __('translations.menu.languages') }}
+                  </x-menu-link>
+              </li>
 
-          <li>
-              <x-menu-link :href="route('levels.index')">
-                  <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.levels') }}
-              </x-menu-link>
-          </li>
+              <li>
+                  <x-menu-link :href="route('levels.index')">
+                      <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.levels') }}
+                  </x-menu-link>
+              </li>
 
-          <li>
-              <x-menu-link :href="route('certificates.index')">
-                  <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.certificates') }}
-              </x-menu-link>
-          </li>
+              <li>
+                  <x-menu-link :href="route('certificates.index')">
+                      <i class="bi bi-bar-chart pe-2"></i>{{ __('translations.menu.certificates') }}
+                  </x-menu-link>
+              </li>
 
-          <li>
-              <x-menu-link :href="route('school_types.index')">
-                  <i class="bi bi-stack"></i>{{ __('translations.menu.school_types') }}
-              </x-menu-link>
-          </li>
-
+              <li>
+                  <x-menu-link :href="route('school_types.index')">
+                      <i class="bi bi-stack"></i>{{ __('translations.menu.school_types') }}
+                  </x-menu-link>
+              </li>
+          @endrole
       </ul>
 
     <div class="mt-auto p-2 border-top">
