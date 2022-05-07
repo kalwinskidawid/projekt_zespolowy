@@ -32,7 +32,7 @@ class SchoolTypeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => __('transaltions.attributes.main.name')
+            'name' => __('translations.attributes.main.name')
         ];
     }
 }

@@ -1,9 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
     <x-slot name="styles">
         <link rel="stylesheet" href="{{ asset('css/certificates.css')  }}">
@@ -11,6 +6,12 @@
 
     <x-slot name="scripts">
         <script src="{{ asset('js/certificates.js')  }}"></script>
+    </x-slot>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
     </x-slot>
 
     <div class="container">

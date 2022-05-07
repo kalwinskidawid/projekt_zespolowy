@@ -1,4 +1,17 @@
 <x-app-layout>
+
+    <x-slot name="styles">
+        <link rel="stylesheet" href="{{ asset('css/certificates.css')  }}">
+    </x-slot>
+
+    <x-slot name="scripts">
+        <script src="{{ asset('js/certificates.js')  }}"></script>
+
+        {!!
+            JsValidator::formRequest('App\Http\Requests\CertificateRequest')
+        !!}
+    </x-slot>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}

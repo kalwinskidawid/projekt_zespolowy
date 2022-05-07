@@ -1,16 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
     <x-slot name="styles">
         <link rel="stylesheet" href="{{ asset('css/technologies.css')  }}">
     </x-slot>
 
     <x-slot name="scripts">
-        <script src="{{ asset('js/technologies.js')  }}"></script>
+        <script src="{{ asset('js/technologies.js') }}"></script>
+
+        {!!
+            JsValidator::formRequest('App\Http\Requests\TechnologyRequest')
+        !!}
+    </x-slot>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
     </x-slot>
 
     <div class="container">
@@ -28,12 +33,12 @@
                       action="{{ route('technologies.update', $technology) }}"
                       @else
                       action="{{ route('technologies.store') }}"
-                      @endif
+                    @endif
                 >
                     @csrf
 
                     @if( isset( $isEdit ) && $isEdit == true )
-                    @method('PATCH')
+                        @method('PATCH')
                     @endif
 
                     <div class="row mb-3">
@@ -45,7 +50,7 @@
                                    value="{{ $technology->name }}"
                                    @else
                                    value="{{ old('name') }}"
-                                   @endif
+                                @endif
                             >
 
                             @error('name')
@@ -60,10 +65,10 @@
                             <a href="{{ route('technologies.index') }}" type="submit" class="btn btn-secondary"> {{ __('translations.buttons.cancel') }} </a>
 
                             <button type="submit" class="btn btn-primary">
-                                @if( isset($technology) )
-                                {{ __('translations.buttons.update') }}
+                                @if( isset($technology))
+                                    {{ __('translations.buttons.update') }}
                                 @else
-                                {{ __('translations.buttons.store') }}
+                                    {{ __('translations.buttons.store') }}
                                 @endif
                             </button>
                         </div>

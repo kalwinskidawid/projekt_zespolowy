@@ -1,4 +1,5 @@
 require('datatables.net-bs5');
+require('./vendor/jsvalidation/js/jsvalidation');
 
 $(function() {
     $('table').DataTable({
