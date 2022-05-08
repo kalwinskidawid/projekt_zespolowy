@@ -135,7 +135,8 @@
 /******/ 			"css/certificates": 0,
 /******/ 			"css/languages": 0,
 /******/ 			"css/levels": 0,
-/******/ 			"css/technologies": 0
+/******/ 			"css/technologies": 0,
+/******/ 			"css/school_types": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading

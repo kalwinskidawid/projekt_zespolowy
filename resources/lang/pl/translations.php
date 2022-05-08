@@ -7,6 +7,7 @@ return [
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
+        'school_types' => 'Rodzaje Szkół',
     ],
 
     'labels' => [
@@ -72,6 +73,26 @@ return [
                 'destroy' => 'Kariera zawodowa został usunięta',
                 'restore' => 'Kariera zawodową został przywrócona'
             ]
+        ],
+
+        'school_types' => [
+            'success' => [
+                'stored' => 'Dodano Rodzaj szkoły :name',
+                'updated' => 'Zaktualizowano Rodzaj szkoły :name',
+                'nothing-changed' => 'Dane Rodzaju szkoły :name nie zmieniły się',
+                'destroy' => 'Rodzaj szkoły :name został usunięty',
+                'restore' => 'Rodzaj szkoły :name został przywrócony',
+            ]
+        ],
+
+        'skills' => [
+            'success' => [
+                'stored' => 'Dodano nową umiejętność :name',
+                'updated' => 'Zaktualizowano umiejętność',
+                'nothing-changed' => 'Umiejętność nie zmieniła się',
+                'destroy' => 'Umiejętność została usunięta',
+                'restore' => 'Umiejętność została przywrócona'
+            ]
         ]
     ],
 
@@ -91,6 +112,10 @@ return [
 
         'languages' => [
             'name_unique' => 'Istnieje już język, dla którego :attribute ma podaną wartość',
+        ],
+
+        'school_types' => [
+            'name_unique' => 'Istnieje już Rodzaj szkoły, dla którego :attribute ma podaną wartość',
         ],
 
     ],
@@ -133,6 +158,8 @@ return [
         'levels' => 'Poziomy',
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
+        'school_types' => 'Rodzaje Szkół',
+
     ]
 
 ];

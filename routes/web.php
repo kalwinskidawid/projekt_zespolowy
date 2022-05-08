@@ -5,6 +5,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\SchoolTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -135,6 +136,29 @@ Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('',[ProfileController::class, 'index'])->name('index');
     Route::get('{id}',[ProfileController::class, 'getProfile'])->where('id', '[0-9]+')->name('getProfile');
 });
+// Routing dla typów szkół
+Route::name('school_types.')->prefix('school_types')->group( function() {
+    Route::get('', [SchoolTypeController::class, 'index'])->name('index');
+
+    // odpowiedzialny za wyswietlanie formularza dodawania
+    Route::get('create', [SchoolTypeController::class, 'create'])->name('create');
+
+    // odpowiedzialny za dodawanie nowych wierszy do bazy
+    Route::post('', [SchoolTypeController::class, 'store'])->name('store');
+
+    // odpowiedzialny za wyswietlanie formularza od edycji
+    Route::get('{school_type}/edit', [SchoolTypeController::class, 'edit'])->where('school_type', '[0-9]+')->name('edit');
+
+    // odpowiedzialny za przesylanie zedytowanego formularza do bazy
+    Route::patch('{school_type}/edit', [SchoolTypeController::class, 'update'])->where('school_type', '[0-9]+')->name('update');
+
+    //usuwanie
+    Route::delete('{school_type}', [SchoolTypeController::class, 'destroy'])->where('school_type', '[0-9]+')->name('destroy');
+
+    // przywracanie
+    Route::put('{id}/restore', [SchoolTypeController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
+});
+
 
 
 

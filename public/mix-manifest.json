@@ -4,12 +4,14 @@
     "/js/levels.js": "/js/levels.js",
     "/js/languages.js": "/js/languages.js",
     "/js/certificates.js": "/js/certificates.js",
+    "/js/school_types.js": "/js/school_types.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
     "/css/certificates.css": "/css/certificates.css",
     "/css/languages.css": "/css/languages.css",
     "/css/levels.css": "/css/levels.css",
     "/css/technologies.css": "/css/technologies.css",
+    "/css/school_types.css": "/css/school_types.css",
     "/js/vendor.js": "/js/vendor.js",
     "/vendor/datatables/i18n/pl.json": "/vendor/datatables/i18n/pl.json"
 }
