@@ -36,4 +36,8 @@ class Profile extends Model
     {
         return $this->hasMany(Skill::class);
     }
+    public function school()
+    {
+        return $this->hasMany(School::class);
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\SchoolTypeController;
@@ -135,6 +136,10 @@ Route::name('certificates.')->prefix('certificates')->group( function() {
 Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('',[ProfileController::class, 'index'])->name('index');
     Route::get('{id}',[ProfileController::class, 'getProfile'])->where('id', '[0-9]+')->name('getProfile');
+    Route::post('/skills',[SkillController::class,'store'])->name('skills.store');
+    Route::patch('/skills/{skill_id}',[SkillController::class,'update'])->where('skill_id', '[0-9]+')->name('skills.update');
+    Route::delete('/skills/{skill_id}',[SkillController::class,'destroy'])->where('skill_id', '[0-9]+')->name('skills.destroy');
+    Route::put('/skills/{skill_id}',[SkillController::class,'restore'])->where('skill_id', '[0-9]+')->name('skills.restore');
 });
 // Routing dla typów szkół
 Route::name('school_types.')->prefix('school_types')->group( function() {

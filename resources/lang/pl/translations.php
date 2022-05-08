@@ -136,7 +136,9 @@ return [
             'career' => 'kariera',
             'skills' => 'umiejętności',
             'languages' => 'języki',
-            'certificates' => 'certyfikaty'
+            'certificates' => 'certyfikaty',
+            'technology' => 'technologia',
+            'level' => 'poziom'
         ]
     ],
 
@@ -159,6 +161,10 @@ return [
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
+
+    ],
+
+    'labels' => [
 
     ]
 
