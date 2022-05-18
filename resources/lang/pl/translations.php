@@ -14,7 +14,13 @@ return [
         'edit' => 'Edycja',
         'create' => 'Dodaj',
         'restore' => 'Przywróć',
-        'destroy' => 'Usuń'
+        'destroy' => 'Usuń',
+        'save' => 'Zapisz',
+        'cancel'=>'Anuluj',
+
+        'profile' => [
+           'edit' => 'Edycja profilu'
+        ]
     ],
 
     'auth' => [
@@ -88,10 +94,10 @@ return [
         'skills' => [
             'success' => [
                 'stored' => 'Dodano nową umiejętność :name',
-                'updated' => 'Zaktualizowano umiejętność',
+                'updated' => 'Zaktualizowano umiejętność :name',
                 'nothing-changed' => 'Umiejętność nie zmieniła się',
-                'destroy' => 'Umiejętność została usunięta',
-                'restore' => 'Umiejętność została przywrócona'
+                'destroy' => 'Umiejętność :name została usunięta',
+                'restore' => 'Umiejętność :name została przywrócona'
             ]
         ]
     ],
@@ -133,6 +139,7 @@ return [
             'description' => 'opis'
         ],
         'profile' => [
+            'schools' => 'szkoły',
             'career' => 'kariera',
             'skills' => 'umiejętności',
             'languages' => 'języki',
@@ -161,10 +168,6 @@ return [
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
-
-    ],
-
-    'labels' => [
 
     ]
 

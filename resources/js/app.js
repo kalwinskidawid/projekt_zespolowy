@@ -15,4 +15,7 @@ var toastList = toastElList.map(function(toastEl) {
 toastList.forEach(toast => toast.show());
 
 // Podpowiedzi typu tooltips
-tooltipActivation(document);
+let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+});

@@ -8,6 +8,7 @@ use App\Models\KnownForeignLanguage;
 use App\Models\Level;
 use App\Models\Profile;
 use App\Models\School;
+use App\Models\SchoolType;
 use App\Models\Skill;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,19 @@ class ProfileController extends Controller
         $careers = Career::where('profile_id', '=', $profile->id)->get();
         $technologies = Technology::orderBy('name')->get();
         $levels = Level::orderBy('name')->get();
+        $schoolList = SchoolType::orderBy('name')->get();
 
         return view(
-            'profiles.index', compact("careers", "profile", "skills", "certificates", "knownLanguages", "schools", "technologies","levels")
+            'profiles.index',
+            compact("careers",
+                "profile",
+                "skills",
+                "certificates",
+                "knownLanguages",
+                "schools",
+                "technologies",
+                "levels",
+                "schoolList")
         );
     }
 }

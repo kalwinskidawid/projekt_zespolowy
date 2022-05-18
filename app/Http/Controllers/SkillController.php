@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SkillRequest;
-use App\Models\Language;
-use App\Models\Profile;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +11,7 @@ class SkillController extends Controller
     public function store( SkillRequest $request) {
         $skill = Skill::create(
             $request->merge([
-                'profile_id' => Profile::where('user_id', '=', Auth::id())->first()->id,
+                'profile_id' => Auth::user()->profile->id,
                 'created_by' => Auth::id()
             ])->all()
         );
@@ -31,26 +29,27 @@ class SkillController extends Controller
 
         return redirect()->route('profiles.index')->with(
             'success',
-            __( $skill->wasChanged()? 'translations.toasts.languages.success.updated' : 'translations.toasts.languages.success.nothing-changed',[
-                'name' => $skill->name
+            __( $skill->wasChanged()? 'translations.toasts.skills.success.updated' : 'translations.toasts.skills.success.nothing-changed',[
+                'name' => $skill->technology->name
             ])
         );
     }
 
-    public function destroy( Language $language ) {
-        $language->delete();
+    public function destroy( Skill $skill ) {
+        dd($skill);
+        $skill->delete();
 
-        return redirect()->route('languages.index')->with( 'success', __('translations.toasts.languages.success.destroy', [
-            'name' => $language->name
+        return redirect()->route('profiles.index')->with( 'success', __('translations.toasts.skills.success.destroy', [
+            'name' => $skill->technology->name
         ]));
     }
 
     public function restore( int $id ) {
-        $language = Language::onlyTrashed()->findOrFail($id);
-        $language->restore();
+        $skill = Skill::onlyTrashed()->findOrFail($id);
+        $skill->restore();
 
-        return redirect()->route('languages.index')->with('success', __('translations.toasts.languages.success.restore', [
-            'name' => $language->name
+        return redirect()->route('profiles.index')->with('success', __('translations.toasts.skills.success.restore', [
+            'name' => $skill->technology->name
         ]));
     }
 }
