@@ -136,6 +136,11 @@ Route::name('certificates.')->prefix('certificates')->group( function() {
 Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('',[ProfileController::class, 'index'])->name('index');
     Route::get('{id}',[ProfileController::class, 'getProfile'])->where('id', '[0-9]+')->name('getProfile');
+    Route::get('/add-school', [ProfileController::class, 'addSchool'])->name('addSchool');
+    Route::get('/edit-school', [ProfileController::class, 'editSchool'])->name('editSchool');
+    Route::get('/edit-save-school', [ProfileController::class, 'editSaveSchool'])->name('editSaveSchool');
+    Route::get('/edit-cancel-school', [ProfileController::class, 'cancelSchool'])->name('cancelSchool');
+    Route::get('/delete-school', [ProfileController::class, 'deleteSchool'])->name('deleteSchool');
     Route::post('/skills',[SkillController::class,'store'])->name('skills.store');
     Route::patch('/skills/{skill_id}',[SkillController::class,'update'])->where('skill_id', '[0-9]+')->name('skills.update');
     Route::delete('/skills/{skill_id}',[SkillController::class,'destroy'])->where('skill_id', '[0-9]+')->name('skills.destroy');

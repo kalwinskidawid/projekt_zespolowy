@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Career;
-use App\Models\Certificate;
-use App\Models\KnownForeignLanguage;
 use App\Models\Level;
-use App\Models\Profile;
-use App\Models\School;
-use App\Models\SchoolType;
 use App\Models\Skill;
+use App\Models\Career;
+use App\Models\School;
+use App\Models\Profile;
+use App\Models\SchoolType;
 use App\Models\Technology;
+use App\Models\Certificate;
+use Illuminate\Http\Request;
+use App\Models\KnownForeignLanguage;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -50,5 +51,37 @@ class ProfileController extends Controller
                 "levels",
                 "schoolList")
         );
+    }
+
+    public function addSchool(Request $request){
+        $school = School::create(
+            $request->all()
+        );
+        return view('profiles.add.school', compact('school'));
+    }
+
+    public function editSchool(Request $request){
+        $school = School::find($request->input('id'));
+        $schoolList = SchoolType::orderBy('name')->get();
+        return view('profiles.edit.school', compact('school','schoolList'));
+    }
+
+    public function editSaveSchool(Request $request){
+        $school = School::find($request->input('id'));
+
+        $school->update($request->all());
+
+        return view('profiles.editsave.school', compact('school'));
+    }
+
+    public function cancelSchool(Request $request){
+        $school = School::find($request->input('id'));
+        return view('profiles.editsave.school', compact('school'));
+    }
+
+    public function deleteSchool(Request $request){
+        $school=School::find($request->input('id'));
+        $school->forceDelete();
+        return 0;
     }
 }
