@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
 use App\Models\Level;
 use App\Models\Skill;
 use App\Models\Career;
@@ -38,6 +39,7 @@ class ProfileController extends Controller
         $technologies = Technology::orderBy('name')->get();
         $levels = Level::orderBy('name')->get();
         $schoolList = SchoolType::orderBy('name')->get();
+        $languageList = Language::orderBy('name')->get();
 
         return view(
             'profiles.index',
@@ -49,7 +51,8 @@ class ProfileController extends Controller
                 "schools",
                 "technologies",
                 "levels",
-                "schoolList")
+                "schoolList",
+                "languageList")
         );
     }
 
@@ -94,13 +97,13 @@ class ProfileController extends Controller
 
     public function editCareer(Request $request){
         $career = Career::find($request->input('id'));
-        
+
         return view('profiles.edit.career', compact('career'));
     }
 
     public function editSaveCareer(Request $request){
         $career = Career::find($request->input('id'));
-        
+
         $career->update($request->all());
 
         return view('profiles.editsave.career', compact('career'));
@@ -134,7 +137,7 @@ class ProfileController extends Controller
 
     public function editSaveSkill(Request $request){
         $skill = Skill::find($request->input('id'));
-        
+
         $skill->update($request->all());
 
         return view('profiles.editsave.skill', compact('skill'));
@@ -148,6 +151,71 @@ class ProfileController extends Controller
     public function deleteSkill(Request $request){
         $skill=Skill::find($request->input('id'));
         $skill->forceDelete();
+        return 0;
+    }
+
+    public function addCertificate(Request $request){
+        $certificate = Certificate::create(
+            $request->all()
+        );
+        return view('profiles.add.certificate', compact('certificate'));
+    }
+
+    public function editCertificate(Request $request){
+        $certificate = Certificate::find($request->input('id'));
+        return view('profiles.edit.certificate', compact('certificate'));
+    }
+
+    public function editSaveCertificate(Request $request){
+        $certificate = Certificate::find($request->input('id'));
+
+        $certificate->update($request->all());
+
+        return view('profiles.editsave.certificate', compact('certificate'));
+    }
+
+    public function cancelCertificate(Request $request){
+        $certificate = Certificate::find($request->input('id'));
+        return view('profiles.editsave.certificate', compact('certificate'));
+    }
+
+    public function deleteCertificate(Request $request){
+        $certificate=Certificate::find($request->input('id'));
+        $certificate->forceDelete();
+        return 0;
+    }
+
+    public function addLanguage(Request $request){
+        $language = KnownForeignLanguage::create(
+            $request->all()
+        );
+        return view('profiles.add.language', compact('language'));
+    }
+
+    public function editLanguage(Request $request){
+        $language = KnownForeignLanguage::find($request->input('id'));
+        $languageList = Language::orderBy('name')->get();
+        $levels = Level::orderBy('name')->get();
+
+        return view('profiles.edit.language', compact('language','languageList', 'levels'));
+    }
+
+    public function editSaveLanguage(Request $request){
+        $language = KnownForeignLanguage::find($request->input('id'));
+
+        $language->update($request->all());
+
+        return view('profiles.editsave.language', compact('language'));
+    }
+
+    public function cancelLanguage(Request $request){
+        $language = KnownForeignLanguage::find($request->input('id'));
+        return view('profiles.editsave.language', compact('language'));
+    }
+
+    public function deleteLanguage(Request $request){
+        $language=KnownForeignLanguage::find($request->input('id'));
+        $language->forceDelete();
         return 0;
     }
 }

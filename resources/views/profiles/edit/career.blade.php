@@ -30,10 +30,10 @@
         </div>
     </div>
     <div class="col-sm-2 text-right">
-        <a class="btn btn-primary text-capitalize" onclick="careerSaveEdit({{ $career->id }})">
+        <a class="btn btn-primary text-capitalize text-white" onclick="careerSaveEdit({{ $career->id }})">
             {{ __('translations.labels.save') }}
         </a>
-        <a class="btn btn-danger text-capitalize cancel" onclick="careerCancelEdit({{ $career->id }})">
+        <a class="btn btn-danger text-capitalize cancel text-white" onclick="careerCancelEdit({{ $career->id }})">
             {{ __('translations.labels.cancel') }}
         </a>
     </div>

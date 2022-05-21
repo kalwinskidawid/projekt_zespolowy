@@ -16,7 +16,7 @@
             <div class="col-sm-10">
                 <select type="text" class="form-control" name="name" id="school-type-{{ $school->id }}">
                     @foreach ($schoolList as $schoollist)
-                        <option value="{{ $schoollist->id }}" @if ($schoollist->id == $school->school_type_id) checked @endif>
+                        <option value="{{ $schoollist->id }}" @if ($schoollist->id == $school->schoolType->id) selected @endif>
                             {{ $schoollist->name }}</option>
                     @endforeach
                 </select>
@@ -34,10 +34,10 @@
         </div>
     </div>
     <div class="col-sm-2 text-right">
-        <a class="btn btn-primary text-capitalize" onclick="schoolSaveEdit({{ $school->id }})">
+        <a class="btn btn-primary text-capitalize text-white" onclick="schoolSaveEdit({{ $school->id }})">
             {{ __('translations.labels.save') }}
         </a>
-        <a class="btn btn-danger text-capitalize" onclick="schoolCancelEdit({{ $school->id }})">
+        <a class="btn btn-danger text-capitalize text-white" onclick="schoolCancelEdit({{ $school->id }})">
             {{ __('translations.labels.cancel') }}
         </a>
     </div>

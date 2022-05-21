@@ -99,10 +99,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary text-capitalize" id="school-save">
+                                <a class="btn btn-primary text-capitalize text-white" id="school-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
-                                <a class="btn btn-danger text-capitalize cancel" data-type="add-school">
+                                <a class="btn btn-danger text-capitalize cancel text-white" data-type="add-school">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
@@ -166,10 +166,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary text-capitalize" id="career-save">
+                                <a class="btn btn-primary text-capitalize text-white" id="career-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
-                                <a class="btn btn-danger text-capitalize cancel" data-type="add-career">
+                                <a class="btn btn-danger text-capitalize cancel text-white" data-type="add-career">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
@@ -233,10 +233,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary text-capitalize" id="skill-save">
+                                <a class="btn btn-primary text-capitalize text-white" id="skill-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
-                                <a class="btn btn-danger text-capitalize cancel" data-type="add-skill">
+                                <a class="btn btn-danger text-capitalize cancel text-white" data-type="add-skill">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
@@ -263,7 +263,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.certificates') }}</h5>
@@ -274,123 +273,135 @@
                         <div class="row border-bottom d-none" id="add-certificates">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
+                                    <label for="certificate-name" class="col-sm-2 col-form-label">
+                                        Nazwa
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="name" id="School-name">
+                                        <input type="text" class="form-control" name="name" id="certificate-name">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
+                                    <label for="certificate-link" class="col-sm-2 col-form-label">
+                                       Adres URL
                                     </label>
                                     <div class="col-sm-10">
-                                        <select type="text" class="form-control" name="name" id="School-name">
-                                        </select>
+                                        <input type="text" class="form-control" name="name" id="certificate-link">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
+                                    <label for="certificate-achievement-data" class="col-sm-2 col-form-label">
+                                        Data uzyskania
                                     </label>
                                     <div class="col-sm-10">
-                                        od <input type="date" class="form-control"> do <input type="date"
-                                            class="form-control">
+                                        <input type="date" class="form-control" id="certificate-achievement-data">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="certificate-additional-information" class="col-sm-2 col-form-label">
+                                        Dodatkowe informacje
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="certificate-additional-information">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary text-capitalize">
+                                <a class="btn btn-primary text-capitalize text-white" id="certificate-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
-                                <a class="btn btn-danger text-capitalize cancel" data-type="add-certificates">
+                                <a class="btn btn-danger text-capitalize cancel text-white" data-type="add-certificates">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
                         </div>
-                        @foreach ($certificates as $certificate)
-                            <div class="d-flex justify-content-between border-bottom">
-                                <div class="p-2">
-                                    <a href="{{ $certificate->link }}"> {{ $certificate->name }}</a>
-                                    <div>{{ $certificate->achievement_date }}</div>
-                                    <div>{{ $certificate->description }}</div>
+                        <div id="certificate-list">
+                            @foreach ($certificates as $certificate)
+                                <div id="certificate-id-{{$certificate->id}}">
+                                    <div class="d-flex justify-content-between border-bottom">
+                                        <div class="p-2" id="certificate-{{ $certificate->id }}">
+                                            <a href="{{ $certificate->link }}"> {{ $certificate->name }}</a>
+                                            <div>{{ $certificate->achievement_date }}</div>
+                                            <div>{{ $certificate->description }}</div>
+                                        </div>
+                                        <div class="p-2">
+                                            <a class="btn" onclick="updateCertificate({{ $certificate->id }})">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a class="btn" onclick="certificateDelete({{ $certificate->id }})">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="p-2 editButtons d-none">
-                                    <button class="btn btn-primary text-capitalize" type="submit">
-                                        {{ __('translations.buttons.update') }}
-                                    </button>
-                                    <button class="btn btn-danger text-capitalize" type="submit">
-                                        {{ __('translations.buttons.delete') }}
-                                    </button>
-
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.languages') }}</h5>
                         <a class="btn btn-link text-muted text-capitalize"
-                            id="button-add-langauges">{{ __('translations.labels.create') }}</a>
+                            id="button-add-languages">{{ __('translations.labels.create') }}</a>
                     </div>
                     <div class="card card-body">
-                        <div class="row border-bottom d-none" id="add-languages">
+                        <div class="row border-bottom d-none" id="add-language">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
+                                    <label for="known-language" class="col-sm-2 col-form-label text-capitalize">
+                                        {{ __('translations.attributes.profile.languages') }}
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="name" id="School-name">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <select type="text" class="form-control" name="name" id="School-name">
+                                        <select type="text" class="form-control" name="language_id" id="known-language">
+                                            @foreach ($languageList as $language)
+                                                <option value="{{ $language->id }}">{{ $language->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="School-name" class="col-sm-2 col-form-label">
-                                        ---
+                                    <label for="language-level" class="col-sm-2 col-form-label">
+                                        {{ __('translations.attributes.profile.level') }}
                                     </label>
                                     <div class="col-sm-10">
-                                        od <input type="date" class="form-control"> do <input type="date"
-                                            class="form-control">
+                                        <select type="text" class="form-control" name="language_level_id" id="language-level">
+                                            @foreach ($levels as $level)
+                                                <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary">
+                                <a class="btn btn-primary text-capitalize text-white" id="language-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
-                                <a class="btn btn-danger cancel" data-type="add-languages">
+                                <a class="btn btn-danger text-capitalize cancel text-white" data-type="add-language">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
                         </div>
+                        <div id="language-list">
                         @foreach ($knownLanguages as $knownLanguage)
+                         <div id="language-id-{{$knownLanguage->id}}">
                             <div class="d-flex justify-content-between border-bottom">
                                 <div class="p-2">
                                     {{ $knownLanguage->language->name }}
                                     <div>{{ $knownLanguage->level->name }}</div>
 
                                 </div>
-                                <div class="p-2 editButtons d-none">
-                                    <a class="btn">
+                                <div class="p-2">
+                                    <a class="btn" onclick="updateLanguage({{ $knownLanguage->id }})">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a class="btn">
+                                    <a class="btn" onclick="languageDelete({{ $knownLanguage->id }})">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
                             </div>
+                         </div>
                         @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -437,6 +448,10 @@
 
     $("#button-add-skills").click(() => {
         $("#add-skill").removeClass("d-none");
+    })
+
+    $("#button-add-languages").click(() => {
+        $("#add-language").removeClass("d-none");
     })
 
     $(".cancel").click(function() {
@@ -616,7 +631,7 @@
             }
         });
     }
-    
+
     $('#skill-save').click(function() {
         $.ajax({
             url: "{{ route('profiles.addSkill') }}",
@@ -689,6 +704,172 @@
             method: "get",
             data: {
                 id: skillid,
+            },
+            success: function(data) {
+                $(idj).html("");
+            }
+        });
+    }
+
+    $('#certificate-save').click(function() {
+        $.ajax({
+            url: "{{ route('profiles.addCertificate') }}",
+            method: "get",
+            data: {
+                profile_id: $("#profile-id").val(),
+                name: $("#certificate-name").val(),
+                link: $("#certificate-link").val(),
+                achievement_date: $("#certificate-achievement-data").val(),
+                description: $("#certificate-additional-information").val(),
+            },
+            success: function(data) {
+                $("#certificate-list").append(data);
+                $("#add-certificates").addClass("d-none");
+                $("#certificate-name").val("");
+                $("#certificate-link").val("");
+                $("#certificate-achievement-data").val("");
+                $("#certificate-additional-information").val("");
+            }
+        });
+    })
+
+    function updateCertificate(id){
+        var idj="#certificate-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editCertificate') }}",
+            method: "get",
+            data: {
+                id:id
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function certificateSaveEdit(id){
+        var certificateId=id;
+        var idj="#certificate-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editSaveCertificate') }}",
+            method: "get",
+            data: {
+                id: certificateId,
+                name: $("#certificate-name-"+certificateId).val(),
+                link: $("#certificate-link-"+certificateId).val(),
+                achievement_date: $("#certificate-achievement-data-"+certificateId).val(),
+                description: $("#certificate-additional-information-"+certificateId).val(),
+
+            },
+            success: function(data) {
+                console.log(idj);
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function certificateCancelEdit(id){
+        var certificateId=id;
+        var idj="#certificate-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.cancelCertificate') }}",
+            method: "get",
+            data: {
+                id: certificateId,
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function certificateDelete(id){
+        var certificateId=id;
+        var idj="#certificate-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.deleteCertificate') }}",
+            method: "get",
+            data: {
+                id: certificateId,
+            },
+            success: function(data) {
+                $(idj).html("");
+            }
+        });
+    }
+
+    $('#language-save').click(function() {
+        $.ajax({
+            url: "{{ route('profiles.addLanguage') }}",
+            method: "get",
+            data: {
+                profile_id: $("#profile-id").val(),
+                language_id: $("#known-language").val(),
+                level_id: $("#language-level").val(),
+            },
+            success: function(data) {
+                $("#language-list").append(data);
+                $("#add-language").addClass("d-none");
+            }
+        });
+    })
+
+    function updateLanguage(id){
+        var idj="#language-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editLanguage') }}",
+            method: "get",
+            data: {
+                id:id
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function languageSaveEdit(id){
+        console.log(id);
+        var languageId=id;
+        var idj="#language-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editSaveLanguage') }}",
+            method: "get",
+            data: {
+                id: languageId,
+                language_id: $("#known-language-"+languageId).val(),
+                level_id: $("#language-level-"+languageId).val(),
+            },
+            success: function(data) {
+                console.log(idj);
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function languageCancelEdit(id){
+        var languageId=id;
+        var idj="#language-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.cancelLanguage') }}",
+            method: "get",
+            data: {
+                id: languageId,
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function languageDelete(id){
+        var languageId=id;
+        var idj="#language-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.deleteLanguage') }}",
+            method: "get",
+            data: {
+                id: languageId,
             },
             success: function(data) {
                 $(idj).html("");

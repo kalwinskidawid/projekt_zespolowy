@@ -151,10 +151,16 @@ Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('/edit-save-skill', [ProfileController::class, 'editSaveSkill'])->name('editSaveSkill');
     Route::get('/edit-cancel-skill', [ProfileController::class, 'cancelSkill'])->name('cancelSkill');
     Route::get('/delete-skill', [ProfileController::class, 'deleteSkill'])->name('deleteSkill');
-    Route::post('/skills',[SkillController::class,'store'])->name('skills.store');
-    Route::patch('/skills/{skill_id}',[SkillController::class,'update'])->where('skill_id', '[0-9]+')->name('skills.update');
-    Route::delete('/skills/{skill_id}',[SkillController::class,'destroy'])->where('skill_id', '[0-9]+')->name('skills.destroy');
-    Route::put('/skills/{skill_id}',[SkillController::class,'restore'])->where('skill_id', '[0-9]+')->name('skills.restore');
+    Route::get('/add-certificate', [ProfileController::class, 'addCertificate'])->name('addCertificate');
+    Route::get('/edit-certificate', [ProfileController::class, 'editCertificate'])->name('editCertificate');
+    Route::get('/edit-save-certificate', [ProfileController::class, 'editSaveCertificate'])->name('editSaveCertificate');
+    Route::get('/edit-cancel-certificate', [ProfileController::class, 'cancelCertificate'])->name('cancelCertificate');
+    Route::get('/delete-certificate', [ProfileController::class, 'deleteCertificate'])->name('deleteCertificate');
+    Route::get('/add-language', [ProfileController::class, 'addLanguage'])->name('addLanguage');
+    Route::get('/edit-language', [ProfileController::class, 'editLanguage'])->name('editLanguage');
+    Route::get('/edit-save-language', [ProfileController::class, 'editSaveLanguage'])->name('editSaveLanguage');
+    Route::get('/edit-cancel-language', [ProfileController::class, 'cancelLanguage'])->name('cancelLanguage');
+    Route::get('/delete-language', [ProfileController::class, 'deleteLanguage'])->name('deleteLanguage');
 });
 // Routing dla typów szkół
 Route::name('school_types.')->prefix('school_types')->group( function() {
