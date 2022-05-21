@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\SchoolTypeController;
@@ -131,6 +133,37 @@ Route::middleware('role:admin')->group(function() {
         // przywracanie
         Route::put('{id}/restore', [CertificateController::class, 'restore'])->where('id', '[0-9]+')->name('restore');
     });
+
+//Routing dla profilu
+Route::name('profiles.')->prefix('profiles')->group(function() {
+    Route::get('',[ProfileController::class, 'index'])->name('index');
+    Route::get('{id}',[ProfileController::class, 'getProfile'])->where('id', '[0-9]+')->name('getProfile');
+    Route::get('/add-school', [ProfileController::class, 'addSchool'])->name('addSchool');
+    Route::get('/edit-school', [ProfileController::class, 'editSchool'])->name('editSchool');
+    Route::get('/edit-save-school', [ProfileController::class, 'editSaveSchool'])->name('editSaveSchool');
+    Route::get('/edit-cancel-school', [ProfileController::class, 'cancelSchool'])->name('cancelSchool');
+    Route::get('/delete-school', [ProfileController::class, 'deleteSchool'])->name('deleteSchool');
+    Route::get('/add-career', [ProfileController::class, 'addCareer'])->name('addCareer');
+    Route::get('/edit-career', [ProfileController::class, 'editCareer'])->name('editCareer');
+    Route::get('/edit-save-career', [ProfileController::class, 'editSaveCareer'])->name('editSaveCareer');
+    Route::get('/edit-cancel-career', [ProfileController::class, 'cancelCareer'])->name('cancelCareer');
+    Route::get('/delete-career', [ProfileController::class, 'deleteCareer'])->name('deleteCareer');
+    Route::get('/add-skill', [ProfileController::class, 'addSkill'])->name('addSkill');
+    Route::get('/edit-skill', [ProfileController::class, 'editSkill'])->name('editSkill');
+    Route::get('/edit-save-skill', [ProfileController::class, 'editSaveSkill'])->name('editSaveSkill');
+    Route::get('/edit-cancel-skill', [ProfileController::class, 'cancelSkill'])->name('cancelSkill');
+    Route::get('/delete-skill', [ProfileController::class, 'deleteSkill'])->name('deleteSkill');
+    Route::get('/add-certificate', [ProfileController::class, 'addCertificate'])->name('addCertificate');
+    Route::get('/edit-certificate', [ProfileController::class, 'editCertificate'])->name('editCertificate');
+    Route::get('/edit-save-certificate', [ProfileController::class, 'editSaveCertificate'])->name('editSaveCertificate');
+    Route::get('/edit-cancel-certificate', [ProfileController::class, 'cancelCertificate'])->name('cancelCertificate');
+    Route::get('/delete-certificate', [ProfileController::class, 'deleteCertificate'])->name('deleteCertificate');
+    Route::get('/add-language', [ProfileController::class, 'addLanguage'])->name('addLanguage');
+    Route::get('/edit-language', [ProfileController::class, 'editLanguage'])->name('editLanguage');
+    Route::get('/edit-save-language', [ProfileController::class, 'editSaveLanguage'])->name('editSaveLanguage');
+    Route::get('/edit-cancel-language', [ProfileController::class, 'cancelLanguage'])->name('cancelLanguage');
+    Route::get('/delete-language', [ProfileController::class, 'deleteLanguage'])->name('deleteLanguage');
+});
 
     // Routing dla typów szkół
     Route::name('school_types.')->prefix('school_types')->group(function () {

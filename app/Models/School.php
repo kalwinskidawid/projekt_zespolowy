@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PhpParser\Builder;
 
-class Certificate extends Model
+class School extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'profile_id',
-        'achievement_date',
-        'name',
-        'link',
+        'school_name',
+        'school_type_id',
+        'start_date',
+        'end_date',
         'description'
     ];
 
@@ -28,4 +29,10 @@ class Certificate extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    public function schoolType()
+    {
+        return $this->belongsTo(SchoolType::class);
+    }
+
 }

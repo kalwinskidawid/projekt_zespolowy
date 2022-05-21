@@ -14,7 +14,13 @@ return [
         'edit' => 'Edycja',
         'create' => 'Dodaj',
         'restore' => 'Przywróć',
-        'destroy' => 'Usuń'
+        'destroy' => 'Usuń',
+        'save' => 'Zapisz',
+        'cancel'=>'Anuluj',
+
+        'profile' => [
+           'edit' => 'Edycja profilu'
+        ]
     ],
 
     'auth' => [
@@ -65,6 +71,16 @@ return [
             ]
         ],
 
+        'careers' => [
+            'success' => [
+                'stored' => 'Dodano karierę zawodową',
+                'updated' => 'Zaktualizowano karierę zawodową',
+                'nothing-changed' => 'Dane kariery zawodowej nie zmieniły się',
+                'destroy' => 'Kariera zawodowa został usunięta',
+                'restore' => 'Kariera zawodową został przywrócona'
+            ]
+        ],
+
         'school_types' => [
             'success' => [
                 'stored' => 'Dodano Rodzaj szkoły :name',
@@ -74,6 +90,16 @@ return [
                 'restore' => 'Rodzaj szkoły :name został przywrócony',
             ]
         ],
+
+        'skills' => [
+            'success' => [
+                'stored' => 'Dodano nową umiejętność :name',
+                'updated' => 'Zaktualizowano umiejętność :name',
+                'nothing-changed' => 'Umiejętność nie zmieniła się',
+                'destroy' => 'Umiejętność :name została usunięta',
+                'restore' => 'Umiejętność :name została przywrócona'
+            ]
+        ]
     ],
 
     'validation' => [
@@ -107,7 +133,20 @@ return [
             'created_at' => 'utworzony',
             'updated_at' => 'aktualizowany',
             'deleted_at' => 'usunięty',
+            'start_date' => 'data rozpoczęcia',
+            'end_date' => 'data zakończenia',
+            'position' => 'pozycja',
+            'description' => 'opis'
         ],
+        'profile' => [
+            'schools' => 'szkoły',
+            'career' => 'kariera',
+            'skills' => 'umiejętności',
+            'languages' => 'języki',
+            'certificates' => 'certyfikaty',
+            'technology' => 'technologia',
+            'level' => 'poziom'
+        ]
     ],
 
     'buttons' => [
