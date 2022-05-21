@@ -84,4 +84,71 @@ class ProfileController extends Controller
         $school->forceDelete();
         return 0;
     }
+
+    public function addCareer(Request $request){
+        $career = Career::create(
+            $request->all()
+        );
+        return view('profiles.add.career', compact('career'));
+    }
+
+    public function editCareer(Request $request){
+        $career = Career::find($request->input('id'));
+        
+        return view('profiles.edit.career', compact('career'));
+    }
+
+    public function editSaveCareer(Request $request){
+        $career = Career::find($request->input('id'));
+        
+        $career->update($request->all());
+
+        return view('profiles.editsave.career', compact('career'));
+    }
+
+    public function cancelCareer(Request $request){
+        $career = Career::find($request->input('id'));
+        return view('profiles.editsave.career', compact('career'));
+    }
+
+    public function deleteCareer(Request $request){
+        $career=Career::find($request->input('id'));
+        $career->forceDelete();
+        return 0;
+    }
+
+    public function addSkill(Request $request){
+        $skill = Skill::create(
+            $request->all()
+        );
+        return view('profiles.add.skill', compact('skill'));
+    }
+
+    public function editSkill(Request $request){
+        $skill = Skill::find($request->input('id'));
+        $technologies = Technology::orderBy('name')->get();
+        $levels = Level::orderBy('name')->get();
+
+        return view('profiles.edit.skill', compact('skill','technologies', 'levels'));
+    }
+
+    public function editSaveSkill(Request $request){
+        $skill = Skill::find($request->input('id'));
+        
+        $skill->update($request->all());
+
+        return view('profiles.editsave.skill', compact('skill'));
+    }
+
+    public function cancelSkill(Request $request){
+        $skill = Skill::find($request->input('id'));
+        return view('profiles.editsave.skill', compact('skill'));
+    }
+
+    public function deleteSkill(Request $request){
+        $skill=Skill::find($request->input('id'));
+        $skill->forceDelete();
+        return 0;
+    }
 }
+

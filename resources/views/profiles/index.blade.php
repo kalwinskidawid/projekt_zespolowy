@@ -133,7 +133,7 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.career') }}</h5>
-                        <a href="#" class="btn btn-link text-muted text-capitalize"
+                        <a class="btn btn-link text-muted text-capitalize"
                             id="button-add-career">{{ __('translations.labels.create') }}</a>
                     </div>
                     <div class="card card-body">
@@ -152,8 +152,7 @@
                                         Opis
                                     </label>
                                     <div class="col-sm-10">
-                                        <select type="text" class="form-control" name="name" id="carrer-des">
-                                        </select>
+                                        <input type="text" class="form-control" name="name" id="career-des">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -167,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <a class="btn btn-primary text-capitalize" id="carrer-save">
+                                <a class="btn btn-primary text-capitalize" id="career-save">
                                     {{ __('translations.labels.save') }}
                                 </a>
                                 <a class="btn btn-danger text-capitalize cancel" data-type="add-career">
@@ -175,8 +174,9 @@
                                 </a>
                             </div>
                         </div>
+                        <div id="career-list">
                         @foreach ($careers as $career)
-                        <div id="careers-id-{{$career->id}}">
+                        <div id="career-id-{{$career->id}}">
                             <div class="d-flex justify-content-between border-bottom">
                                 <div class="p-2">
                                     {{ $career->position }}
@@ -192,7 +192,9 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="py-4 px-4">
@@ -202,14 +204,14 @@
                             id="button-add-skills">{{ __('translations.labels.create') }}</a>
                     </div>
                     <div class="card card-body">
-                        <div class="row border-bottom d-none" id="add-skills">
+                        <div class="row border-bottom d-none" id="add-skill">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
-                                    <label for="technology" class="col-sm-2 col-form-label text-capitalize">
+                                    <label for="skill-technology" class="col-sm-2 col-form-label text-capitalize">
                                         {{ __('translations.attributes.profile.technology') }}
                                     </label>
                                     <div class="col-sm-10">
-                                        <select type="text" class="form-control" name="technology_id" id="technology">
+                                        <select type="text" class="form-control" name="technology_id" id="skill-technology">
                                             @foreach ($technologies as $technology)
                                                 <option value="{{ $technology->id }}">{{ $technology->name }}
                                                 </option>
@@ -218,48 +220,47 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="level" class="col-sm-2 col-form-label">
+                                    <label for="skill-level" class="col-sm-2 col-form-label">
                                         {{ __('translations.attributes.profile.level') }}
                                     </label>
                                     <div class="col-sm-10">
-                                        <select type="text" class="form-control" name="level_id" id="level">
+                                        <select type="text" class="form-control" name="level_id" id="skill-level">
                                             @foreach ($levels as $level)
                                                 <option value="{{ $level->id }}">{{ $level->name }}</option>
                                             @endforeach
                                         </select>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-2 text-right">
-                                <button class="btn btn-primary text-capitalize" type="submit">
+                                <a class="btn btn-primary text-capitalize" id="skill-save">
                                     {{ __('translations.labels.save') }}
-                                </button>
-                                <a class="btn btn-danger text-capitalize cancel" data-type="add-skills">
+                                </a>
+                                <a class="btn btn-danger text-capitalize cancel" data-type="add-skill">
                                     {{ __('translations.labels.cancel') }}
                                 </a>
                             </div>
                         </div>
-
+                        <div id="skill-list">
                         @foreach ($skills as $skill)
+                        <div id="skill-id-{{$skill->id}}">
                             <div class="d-flex justify-content-between border-bottom">
                                 <div class="p-2">
                                     {{ $skill->technology->name }}
                                     <div>{{ $skill->level->name }}</div>
                                 </div>
-                                <div class="p-2 editButtons d-none">
-                                    <a class="btn btn-primary text-capitalize" href="">
-                                        {{ __('translations.buttons.update') }}
+                                <div class="p-2">
+                                    <a class="btn" onclick="updateSkill({{ $skill->id }})">
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form style="display:inline" method="DELETE"
-                                        action="{{ route('profiles.skills.destroy', $skill) }}">
-                                        <button class="btn btn-danger text-capitalize" type="submit">
-                                            {{ __('translations.buttons.delete') }}
-                                        </button>
-                                    </form>
+                                    <a class="btn" onclick="skillDelete({{ $skill->id }})">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
+                        </div>
                     </div>
                 </div>
 
@@ -435,7 +436,7 @@
     })
 
     $("#button-add-skills").click(() => {
-        $("#add-skills").removeClass("d-none");
+        $("#add-skill").removeClass("d-none");
     })
 
     $(".cancel").click(function() {
@@ -457,7 +458,6 @@
             success: function(data) {
                 $("#school-list").append(data);
                 $("#add-school").addClass("d-none");
-                $("#profile-id").val("");
                 $("#school-name").val("");
                 $("#school-type").val("");
                 $("#school-start").val("");
@@ -488,7 +488,6 @@
             method: "get",
             data: {
                 id: schoolid,
-                profile_id: $("#profile-id-"+schoolid).val(),
                 school_name: $("#school-name-"+schoolid).val(),
                 school_type_id: $("#school-type-"+schoolid).val(),
                 start_date: $("#school-start-"+schoolid).val(),
@@ -530,5 +529,171 @@
             }
         });
     }
+
+    $('#career-save').click(function() {
+        $.ajax({
+            url: "{{ route('profiles.addCareer') }}",
+            method: "get",
+            data: {
+                profile_id: $("#profile-id").val(),
+                position: $("#career-name").val(),
+                description: $("#career-des").val(),
+                start_date: $("#career-start").val(),
+                end_date: $("#career-end").val(),
+            },
+            success: function(data) {
+                $("#career-list").append(data);
+                $("#add-career").addClass("d-none");
+                $("#career-name").val("");
+                $("#career-des").val("");
+                $("#career-start").val("");
+                $("#career-end").val("");
+            }
+        });
+    })
+
+    function updateCareer(id){
+        var idj="#career-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editCareer') }}",
+            method: "get",
+            data: {
+                id:id
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function careerSaveEdit(id){
+        console.log(id);
+        var careerid=id;
+        var idj="#career-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editSaveCareer') }}",
+            method: "get",
+            data: {
+                id: careerid,
+                position: $("#career-name"+careerid).val(),
+                description: $("#career-des"+careerid).val(),
+                start_date: $("#career-start"+careerid).val(),
+                end_date: $("#career-end"+careerid).val(),
+            },
+            success: function(data) {
+                console.log(idj);
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function careerCancelEdit(id){
+        var careerid=id;
+        var idj="#career-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.cancelCareer') }}",
+            method: "get",
+            data: {
+                id: careerid,
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function careerDelete(id){
+        var careerid=id;
+        var idj="#career-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.deleteCareer') }}",
+            method: "get",
+            data: {
+                id: careerid,
+            },
+            success: function(data) {
+                $(idj).html("");
+            }
+        });
+    }
     
+    $('#skill-save').click(function() {
+        $.ajax({
+            url: "{{ route('profiles.addSkill') }}",
+            method: "get",
+            data: {
+                profile_id: $("#profile-id").val(),
+                technology_id: $("#skill-technology").val(),
+                level_id: $("#skill-level").val(),
+            },
+            success: function(data) {
+                $("#skill-list").append(data);
+                $("#add-skill").addClass("d-none");
+            }
+        });
+    })
+
+    function updateSkill(id){
+        var idj="#skill-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editSkill') }}",
+            method: "get",
+            data: {
+                id:id
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function skillSaveEdit(id){
+        console.log(id);
+        var skillid=id;
+        var idj="#skill-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.editSaveSkill') }}",
+            method: "get",
+            data: {
+                id: skillid,
+                technology_id: $("#skill-technology-"+skillid).val(),
+                level_id: $("#skill-level-"+skillid).val(),
+            },
+            success: function(data) {
+                console.log(idj);
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function skillCancelEdit(id){
+        var skillid=id;
+        var idj="#skill-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.cancelSkill') }}",
+            method: "get",
+            data: {
+                id: skillid,
+            },
+            success: function(data) {
+                $(idj).html(data);
+            }
+        });
+    }
+
+    function skillDelete(id){
+        var skillid=id;
+        var idj="#skill-id-"+id;
+        $.ajax({
+            url: "{{ route('profiles.deleteSkill') }}",
+            method: "get",
+            data: {
+                id: skillid,
+            },
+            success: function(data) {
+                $(idj).html("");
+            }
+        });
+    }
+
 </script>

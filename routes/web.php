@@ -141,6 +141,16 @@ Route::name('profiles.')->prefix('profiles')->group(function() {
     Route::get('/edit-save-school', [ProfileController::class, 'editSaveSchool'])->name('editSaveSchool');
     Route::get('/edit-cancel-school', [ProfileController::class, 'cancelSchool'])->name('cancelSchool');
     Route::get('/delete-school', [ProfileController::class, 'deleteSchool'])->name('deleteSchool');
+    Route::get('/add-career', [ProfileController::class, 'addCareer'])->name('addCareer');
+    Route::get('/edit-career', [ProfileController::class, 'editCareer'])->name('editCareer');
+    Route::get('/edit-save-career', [ProfileController::class, 'editSaveCareer'])->name('editSaveCareer');
+    Route::get('/edit-cancel-career', [ProfileController::class, 'cancelCareer'])->name('cancelCareer');
+    Route::get('/delete-career', [ProfileController::class, 'deleteCareer'])->name('deleteCareer');
+    Route::get('/add-skill', [ProfileController::class, 'addSkill'])->name('addSkill');
+    Route::get('/edit-skill', [ProfileController::class, 'editSkill'])->name('editSkill');
+    Route::get('/edit-save-skill', [ProfileController::class, 'editSaveSkill'])->name('editSaveSkill');
+    Route::get('/edit-cancel-skill', [ProfileController::class, 'cancelSkill'])->name('cancelSkill');
+    Route::get('/delete-skill', [ProfileController::class, 'deleteSkill'])->name('deleteSkill');
     Route::post('/skills',[SkillController::class,'store'])->name('skills.store');
     Route::patch('/skills/{skill_id}',[SkillController::class,'update'])->where('skill_id', '[0-9]+')->name('skills.update');
     Route::delete('/skills/{skill_id}',[SkillController::class,'destroy'])->where('skill_id', '[0-9]+')->name('skills.destroy');
