@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SchoolTypeSeeder::class);
         $this->call(SkillSeeder::class);
         $this->call(KnownForeignLanguageSeeder::class);
+        $this->call(ContracttypeSeeder::class);
+        $this->call(EmployeeadvertSeeder::class);
 
     }
 }

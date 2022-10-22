@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Technology extends Model
+class Contracttype extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -15,16 +14,7 @@ class Technology extends Model
         'name'
     ];
 
-    public function scopeWithInactive(Builder $query): Builder
-    {
-        return $query->withTrashed();
-    }
-
-    public function skill(){
-        return $this->hasMany(Skill::class);
-    }
-
-    // każda technologia może być przypisana do wielu ogłoszeń
+    // każdy typ kontraktu może wystąpić w ogłoszeniu pracowników wiele razy
     public function employeeadverts()
     {
         $this->hasMany(Employeeadvert::class);

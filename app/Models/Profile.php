@@ -40,4 +40,10 @@ class Profile extends Model
     {
         return $this->hasMany(School::class);
     }
+
+    // każdy profil może miec wiele ogłoszeń
+    public function employeeadverts()
+    {
+        $this->hasMany(Employeeadvert::class);
+    }
 }
