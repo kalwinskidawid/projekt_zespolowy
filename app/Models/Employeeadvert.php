@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employeeadvert extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'technology_id',
@@ -27,7 +26,7 @@ class Employeeadvert extends Model
     // każde ogłoszenie może mieć przypisaną jedną technologię (robimy uproszczenie)
     public function technology()
     {
-        $this->belongsTo(Profile::class);
+        $this->hasOne(Technology::class,'technology_id');
     }
 
     public function contracttype()

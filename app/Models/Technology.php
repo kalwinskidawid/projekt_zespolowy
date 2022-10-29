@@ -25,8 +25,8 @@ class Technology extends Model
     }
 
     // każda technologia może być przypisana do wielu ogłoszeń
-    public function employeeadverts()
+    public function Employeeadvert()
     {
-        $this->hasMany(Employeeadvert::class);
+        $this->belongsTo(Employeeadvert::class);
     }
 }
