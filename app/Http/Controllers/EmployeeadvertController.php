@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contracttype;
 use App\Models\Employeeadvert;
+use App\Models\Profile;
+use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeAdvertController extends Controller
 {
@@ -14,10 +18,10 @@ class EmployeeAdvertController extends Controller
      */
     public function index()
     {
-        $employeeadverts=Employeeadvert::with(['technology'])->get();
-        dd($employeeadverts);
+        $employeeadverts=Employeeadvert::with(['profile','technology','contracttype'])->get();
+        //dd($employeeadverts);
         return view(
-            'employeeadverts.index',$employeeadverts
+            'employeeadverts.index',compact('employeeadverts')
         );
     }
 
@@ -28,7 +32,12 @@ class EmployeeAdvertController extends Controller
      */
     public function create()
     {
-        //
+        $profil=Profile::where('user_id','=',Auth::id())->first();
+        $contracttype=Contracttype::all();
+        $technology=Technology::all();
+        return view(
+            'employeeadverts.create',compact('contracttype','technology','profil')
+        );
     }
 
     /**
@@ -39,7 +48,13 @@ class EmployeeAdvertController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employeeadvert = Employeeadvert::create(
+            $request->all()
+        );
+
+        return redirect()->route('employeeadverts.index')->with('success', __('translations.toasts.languages.success.stored', [
+            'name' => $employeeadvert->location
+        ]));
     }
 
     /**
@@ -82,8 +97,10 @@ class EmployeeAdvertController extends Controller
      * @param  \App\Models\Employeeadvert  $employeeadvert
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employeeadvert $employeeadvert)
+    public function delete($id)
     {
-        //
+        Employeeadvert::find($id)->delete();
+        return redirect()->route('employeeadverts.index')
+            ->with('success','employeeadverts deleted successfully');
     }
 }
