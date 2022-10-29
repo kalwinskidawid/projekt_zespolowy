@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contracttype extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name'
     ];
 
     // każdy typ kontraktu może wystąpić w ogłoszeniu pracowników wiele razy
-    public function employeeadverts()
+    public function employeeadvert()
     {
-        $this->hasMany(Employeeadvert::class);
+        return $this->hasMany(Employeeadvert::class);
     }
 }

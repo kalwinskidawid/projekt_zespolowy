@@ -7,9 +7,7 @@
     <x-slot name="scripts">
         <script src="{{ asset('js/technologies.js') }}"></script>
 
-        {!!
-            JsValidator::formRequest('App\Http\Requests\TechnologyRequest')
-        !!}
+
     </x-slot>
 
     <x-slot name="header">
@@ -19,7 +17,7 @@
     </x-slot>
 
     <div class="container">
-        <h1>{{ __('translations.headers.technologies')  }}</h1>
+        <h1>{{ __('translations.headers.employeeadverts')  }}</h1>
 
         <div class="card">
             <div class="card-body">
@@ -30,9 +28,9 @@
 
                 <form id="category-form" method="POST"
                       @if( isset( $isEdit ) && $isEdit == true )
-                      action="{{ route('technologies.update', $technology) }}"
+                      action="{{ route('employeeadverts.update', $technology) }}"
                       @else
-                      action="{{ route('technologies.store') }}"
+                      action="{{ route('employeeadverts.store') }}"
                     @endif
                 >
                     @csrf
@@ -42,12 +40,54 @@
                     @endif
 
                     <div class="row mb-3">
-
-                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.attributes.main.name') }}:</label>
+                        <input class="d-none" name="profile_id" value="{{$profil->id}}">
+                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.employeeadverts.attributes.technology') }}:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="category-name"
-                                   @if( isset($technology) )
-                                   value="{{ $technology->name }}"
+                            <select type="text" name="technology_id" class="form-control @error('technology') is-invalid @enderror" id="category-name"
+                                   @if( isset($employeeadvert) )
+                                       value="{{ $employeeadvert->technology->id }}"
+                                @endif
+                            >
+                                @foreach($technology as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.employeeadverts.attributes.contracttype') }}:</label>
+                        <div class="col-sm-10">
+                            <select type="text" name="contracttype_id" class="form-control @error('contracttype') is-invalid @enderror" id="category-name"
+                                    @if( isset($employeeadvert) )
+                                        value="{{ $employeeadvert->contracttype->id }}"
+                                @endif
+                            >
+                                @foreach($contracttype as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.employeeadverts.attributes.location') }}:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="location" class="form-control @error('description') is-invalid @enderror" id="category-name"
+                                   @if( isset($employeeadvert) )
+                                   value="{{ $employeeadvert->location }}"
                                    @else
                                    value="{{ old('name') }}"
                                 @endif
@@ -60,12 +100,50 @@
 
                     </div>
 
+                    <div class="row mb-3">
+
+                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.employeeadverts.attributes.salary') }}:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="salary_start" class="form-control @error('salary_start') is-invalid @enderror" id="category-name"
+                                   @if( isset($employeeadvert) )
+                                       value="{{ $employeeadvert->salary_start }}"
+                                   @else
+                                       value="{{ old('name') }}"
+                                @endif
+                            >
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <label for="category-name" class="col-sm-2 col-form-label">{{ __('translations.employeeadverts.attributes.description') }}:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="category-name"
+                                   @if( isset($employeeadvert) )
+                                       value="{{ $employeeadvert->description }}"
+                                   @else
+                                       value="{{ old('name') }}"
+                                @endif
+                            >
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                    </div>
+
                     <div class="d-flex justify-content-end mb-3">
                         <div class="btn-group" role="group" aria-label="Cancel or submit form">
-                            <a href="{{ route('technologies.index') }}" type="submit" class="btn btn-secondary"> {{ __('translations.buttons.cancel') }} </a>
+                            <a href="{{ route('employeeadverts.index') }}" type="submit" class="btn btn-secondary"> {{ __('translations.buttons.cancel') }} </a>
 
                             <button type="submit" class="btn btn-primary">
-                                @if( isset($technology))
+                                @if( isset($employeeadvert))
                                     {{ __('translations.buttons.update') }}
                                 @else
                                     {{ __('translations.buttons.store') }}

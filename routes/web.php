@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeAdvertController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
@@ -189,6 +190,12 @@ Route::name('profiles.')->prefix('profiles')->group(function() {
     });
 });
 
-
+//routing dla listy ogloszeni pracownikow
+Route::name('employeeadverts.')->prefix('employeeadverts')->group(function() {
+    Route::get('',[EmployeeAdvertController::class, 'index'])->name('index');
+    Route::get('create',[EmployeeAdvertController::class, 'create'])->name('create');
+    Route::post('store',[EmployeeAdvertController::class, 'store'])->name('store');
+    Route::delete('delete/{id}',[EmployeeAdvertController::class, 'delete'])->where('id', '[0-9]+')->name('delete');
+});
 
 require __DIR__.'/auth.php';
