@@ -50,6 +50,11 @@
                   </x-menu-link>
               </li>
           @endrole
+          <li>
+              <x-menu-link :href="route('employeeadverts.index')">
+                  <i class="bi bi-stack"></i>{{ __('translations.menu.employeeadverts') }}
+              </x-menu-link>
+          </li>
       </ul>
 
     <div class="mt-auto p-2 border-top">

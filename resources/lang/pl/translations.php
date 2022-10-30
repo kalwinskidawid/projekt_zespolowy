@@ -8,6 +8,7 @@ return [
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
+        'employeeadverts' => 'Ogłoszenia pracowników'
     ],
 
     'labels' => [
@@ -168,12 +169,22 @@ return [
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
+        'employeeadverts' => 'Ogłoszenia Pracowników'
 
     ],
 
     'questions' => [
         'delete' => 'Czy na pewno chcesz usunąć :name?',
         'restore' => 'Czy na pewno chcesz przywrócić :name?'
-    ]
+    ],
 
+    'employeeadverts' => [
+        'attributes' => [
+            'technology' => 'Technologia',
+            'contracttype' => 'Rodzaj umowy',
+            'salary' => 'Wynagrodzenie',
+            'location' => 'Lokalizacja',
+            'description' => 'Opis',
+        ]
+    ]
 ];

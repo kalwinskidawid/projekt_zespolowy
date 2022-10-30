@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Employeeadvert;
 
 class Technology extends Model
 {
@@ -25,8 +26,8 @@ class Technology extends Model
     }
 
     // każda technologia może być przypisana do wielu ogłoszeń
-    public function employeeadverts()
+    public function employeeadvert()
     {
-        $this->hasMany(Employeeadvert::class);
+        return $this->hasMany(Employeeadvert::class);
     }
 }
