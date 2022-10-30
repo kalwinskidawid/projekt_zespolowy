@@ -169,6 +169,7 @@ return [
         'certificates' => 'Certyfikaty',
         'languages' => 'Języki obce',
         'school_types' => 'Rodzaje Szkół',
+        'employeeadverts' => 'Ogłoszenia Pracowników'
 
     ],
 
