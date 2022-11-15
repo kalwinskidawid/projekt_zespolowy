@@ -52,8 +52,8 @@ class EmployeeAdvertController extends Controller
             $request->all()
         );
 
-        return redirect()->route('employeeadverts.index')->with('success', __('translations.toasts.languages.success.stored', [
-            'name' => $employeeadvert->location
+        return redirect()->route('employeeadverts.index')->with('success', __('translations.toasts.employeeadverts.success.stored', [
+            'id' => $employeeadvert->id
         ]));
     }
 
@@ -76,7 +76,16 @@ class EmployeeAdvertController extends Controller
      */
     public function edit(Employeeadvert $employeeadvert)
     {
-        //
+        $isEdit = true;
+
+        $profil=Profile::where('user_id','=',Auth::id())->first();
+        $contracttype=Contracttype::all();
+        $technology=Technology::all();
+
+        return view(
+            'employeeadverts.create',
+            compact( 'employeeadvert', 'contracttype','technology','profil', ['isEdit'] )
+        );
     }
 
     /**
@@ -88,7 +97,19 @@ class EmployeeAdvertController extends Controller
      */
     public function update(Request $request, Employeeadvert $employeeadvert)
     {
-        //
+        $employeeadvert->fill(
+            $request->merge([
+                'profile_id' => Auth::id()
+            ])->all()
+        )->save();
+
+        return redirect()->route('employeeadverts.index')->with(
+            'success',
+            // sprawdzamy, czy zostaly zmienione jakies dane, by wysswietlic prawdilowy komunikat
+            __( $employeeadvert->wasChanged()? 'translations.toasts.employeeadverts.success.updated' : 'translations.toasts.employeeadverts.success.nothing-changed', [
+                'id' => $employeeadvert->id
+            ])
+        );
     }
 
     /**
@@ -101,6 +122,6 @@ class EmployeeAdvertController extends Controller
     {
         Employeeadvert::find($id)->delete();
         return redirect()->route('employeeadverts.index')
-            ->with('success','employeeadverts deleted successfully');
+            ->with('success', __('translations.toasts.employeeadverts.success.destroy', ['id' => $id]));
     }
 }

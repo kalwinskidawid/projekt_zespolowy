@@ -48,6 +48,7 @@
                             @if(Auth::user()->hasRole('admin'))
                             <td>
                                 <x-datatables.action-link class="btn btn-primary"
+                                                          url="{{ route('employeeadverts.edit', $employeeadvert) }}"
                                                           title="{{ __('translations.buttons.update') }}">
                                     <i class="bi bi-pencil-square"></i>
                                     </x-action-link>

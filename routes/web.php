@@ -195,6 +195,10 @@ Route::name('employeeadverts.')->prefix('employeeadverts')->group(function() {
     Route::get('',[EmployeeAdvertController::class, 'index'])->name('index');
     Route::get('create',[EmployeeAdvertController::class, 'create'])->name('create');
     Route::post('store',[EmployeeAdvertController::class, 'store'])->name('store');
+    // odpowiedzialny za wyswietlanie formularza od edycji
+    Route::get('{employeeadvert}/edit', [EmployeeAdvertController::class, 'edit'])->where('employeeadvert', '[0-9]+')->name('edit');
+    // odpowiedzialny za przesylanie zedytowanego formularza do bazy
+    Route::patch('{employeeadvert}/edit', [EmployeeAdvertController::class, 'update'])->where('employeeadvert', '[0-9]+')->name('update');
     Route::delete('delete/{id}',[EmployeeAdvertController::class, 'delete'])->where('id', '[0-9]+')->name('delete');
 });
 

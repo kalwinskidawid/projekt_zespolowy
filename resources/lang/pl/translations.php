@@ -72,6 +72,16 @@ return [
             ]
         ],
 
+        'employeeadverts' => [
+            'success' => [
+                'stored' => 'Dodano ogłoszenie pracownicze o ID :id',
+                'updated' => 'Zaktualizowano ogłoszenie pracowniczne o ID :id',
+                'nothing-changed' => 'Dane ogłoszenia pracowniczego o ID :id nie zmieniły się',
+                'destroy' => 'Ogłoszenie pracownicze o ID :id został usunięty',
+                'restore' => 'Ogłoszenie pracownicze :id zostało przywrócone'
+            ]
+        ],
+
         'careers' => [
             'success' => [
                 'stored' => 'Dodano karierę zawodową',

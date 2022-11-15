@@ -65,7 +65,7 @@ class LanguageController extends Controller
 
         return redirect()->route('languages.index')->with(
             'success',
-            __( $language->wasChanged()? 'translations.toasts.languages.success.updated' : 'translations.toasts.languages.success.nothing-changed',[
+            __( $language->wasChanged()? 'translations.toasts.languages.success.updated' : 'translations.toasts.employeeadverts.nothing-changed',[
                 'name' => $language->name
             ])
         );
