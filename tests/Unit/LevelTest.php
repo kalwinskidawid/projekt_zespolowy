@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Level;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -23,4 +24,31 @@ class LevelTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_store()
+    {
+        $level1 = Level::make([
+            'name' => 'Lvl1'
+        ]);
+
+        $level2 = Level::make([
+            'name' => 'Lvl2'
+        ]);
+
+        $this->assertTrue($level1->name != $level2->name);
+    }
+
+    public function test_stoe_byUser()
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)
+            ->withSession(['banned' => false])
+            ->post('/levels/', [
+                'name' => 'Ekspert',
+            ]);
+
+        $response->assertStatus(200);
+    }
+
 }
