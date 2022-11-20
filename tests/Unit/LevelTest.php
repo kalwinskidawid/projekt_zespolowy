@@ -42,13 +42,17 @@ class LevelTest extends TestCase
     {
         $user = User::first();
 
+        $lvl = Level::where('name','=','Ekspert')->delete();
+
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
             ->post('/levels/', [
                 'name' => 'Ekspert',
             ]);
 
-        $response->assertStatus(200);
+        $lvl = Level::where('name','=','Ekspert')->get();
+
+        $this->assertTrue($lvl!=null);
     }
 
 }
