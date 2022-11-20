@@ -38,7 +38,7 @@ class LevelTest extends TestCase
         $this->assertTrue($level1->name != $level2->name);
     }
 
-    public function test_stoe_byUser()
+    public function test_store_byUser()
     {
         $user = User::first();
 
