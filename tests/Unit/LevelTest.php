@@ -13,7 +13,7 @@ class LevelTest extends TestCase
      *
      * @return void
      */
-
+    //test go with login in
     public function test_check()
     {
         $user = User::first();
@@ -25,19 +25,17 @@ class LevelTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_store()
+    //test go without login in access denied
+    public function test_withoutLogin()
     {
-        $level1 = Level::make([
-            'name' => 'Lvl1'
-        ]);
 
-        $level2 = Level::make([
-            'name' => 'Lvl2'
-        ]);
+        $response = $this->withSession(['banned' => false])
+            ->get('/levels');
 
-        $this->assertTrue($level1->name != $level2->name);
+        $response->assertStatus(403);
     }
 
+    //sprawdzanie wprowadzenia danych przez użytkownika
     public function test_store_byUser()
     {
         $user = User::first();
@@ -53,6 +51,45 @@ class LevelTest extends TestCase
         $lvl = Level::where('name','=','Ekspert')->get();
 
         $this->assertTrue($lvl!=null);
+    }
+
+    //unikalne dane testowe
+    public function test_validation_unique()
+    {
+        $user = User::first();
+
+        $lvl = Level::where('name','=','Ekspert')->delete();
+
+        $response = $this->actingAs($user)
+            ->withSession(['banned' => false])
+            ->post('/levels/', [
+                'name' => 'Ekspert',
+            ]);
+
+        $response = $this->actingAs($user)
+            ->withSession(['banned' => false])
+            ->post('/levels/', [
+                'name' => 'Ekspert',
+            ]);
+
+
+        $response->assertStatus(302);
+    }
+
+    //sprawdzenie czy jest wyświetlany rekord z tablicy
+    public function test_view(){
+        {
+            $level=Level::first()->name;
+            $user = User::first();
+
+            $view = $this->actingAs($user)->view(
+                'levels.index',
+                [
+                    'levels' => Level::withTrashed()->get(),
+                ]);
+
+            $view->assertSee($level);
+        }
     }
 
 }
