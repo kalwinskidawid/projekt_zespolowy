@@ -29,10 +29,9 @@
                     <th>{{ __('translations.employeeadverts.attributes.contracttype') }}</th>
                     <th>{{ __('translations.employeeadverts.attributes.salary') }}</th>
                     <th>{{ __('translations.employeeadverts.attributes.location') }}</th>
+                    <th>{{ __('translations.employeeadverts.attributes.user') }}</th>
                     <th>{{ __('translations.employeeadverts.attributes.description') }}</th>
-                    @if(Auth::user()->hasRole('admin'))
                     <th></th>
-                    @endif
                 </tr>
                 </thead>
 
@@ -44,8 +43,9 @@
                             <td>{{ $employeeadvert->contracttype->name }}</td>
                             <td>{{ $employeeadvert->salary_start }}</td>
                             <td>{{ $employeeadvert->location }}</td>
+                            <td>{{ $employeeadvert->profile->user->name }}</td>
                             <td>{{ $employeeadvert->description }}</td>
-                            @if(Auth::user()->hasRole('admin'))
+                            @can( 'update', $employeeadvert )
                             <td>
                                 <x-datatables.action-link class="btn btn-primary"
                                                           url="{{ route('employeeadverts.edit', $employeeadvert) }}"
@@ -62,7 +62,7 @@
                                         <i class="bi bi-trash"></i>
                                         </x-confirm>
                             </td>
-                            @endif
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

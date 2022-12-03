@@ -76,6 +76,7 @@ class EmployeeAdvertController extends Controller
      */
     public function edit(Employeeadvert $employeeadvert)
     {
+        $this->authorize( 'update', $employeeadvert );
         $isEdit = true;
 
         $profil=Profile::where('user_id','=',Auth::id())->first();
@@ -97,6 +98,8 @@ class EmployeeAdvertController extends Controller
      */
     public function update(Request $request, Employeeadvert $employeeadvert)
     {
+        $this->authorize( 'update', $employeeadvert );
+
         $employeeadvert->fill(
             $request->merge([
                 'profile_id' => Auth::id()
@@ -120,7 +123,12 @@ class EmployeeAdvertController extends Controller
      */
     public function delete($id)
     {
-        Employeeadvert::find($id)->delete();
+        $advert = Employeeadvert::find($id);
+
+        $this->authorize( 'update', $advert );
+
+        $advert->delete();
+
         return redirect()->route('employeeadverts.index')
             ->with('success', __('translations.toasts.employeeadverts.success.destroy', ['id' => $id]));
     }

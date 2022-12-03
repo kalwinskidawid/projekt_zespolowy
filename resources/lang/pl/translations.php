@@ -15,7 +15,7 @@ return [
         'edit' => 'Edycja',
         'create' => 'Dodaj',
         'restore' => 'Przywróć',
-        'destroy' => 'Usuń',
+        'delete' => 'Usuń',
         'save' => 'Zapisz',
         'cancel'=>'Anuluj',
 
@@ -195,6 +195,7 @@ return [
             'salary' => 'Wynagrodzenie',
             'location' => 'Lokalizacja',
             'description' => 'Opis',
+            'user' => 'Użytkownik',
         ]
     ]
 ];

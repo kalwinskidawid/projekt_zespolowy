@@ -51,6 +51,24 @@ class UsersSeeder extends Seeder
         $user->assignRole($pracownikRole);
 
         $user = User::create([
+            'name' => 'Użytkownik Pierwszy',
+            'email' => 'user1@local',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => Hash::make('zaq1@WSX'),
+        ]);
+        $user->markEmailAsVerified();
+        $user->assignRole($pracownikRole);
+
+        $user = User::create([
+            'name' => 'Użytkownik Drugi',
+            'email' => 'user2@local',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => Hash::make('zaq1@WSX'),
+        ]);
+        $user->markEmailAsVerified();
+        $user->assignRole($pracownikRole);
+
+        $user = User::create([
             'name' => 'Pracodawca Testowy',
             'email' => 'pracodawca@local',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),

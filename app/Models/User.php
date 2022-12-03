@@ -44,6 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function isAdmin() {
+        return $this->hasRole(config('app.admin_role'));
+    }
+
     public function profile(){
 
         return $this->hasOne(Profile::class);
