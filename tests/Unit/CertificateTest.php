@@ -2,8 +2,16 @@
 
 namespace Tests\Unit;
 
+use App\Models\Career;
 use App\Models\Certificate;
+use App\Models\KnownForeignLanguage;
+use App\Models\Language;
+use App\Models\Level;
 use App\Models\Profile;
+use App\Models\School;
+use App\Models\SchoolType;
+use App\Models\Skill;
+use App\Models\Technology;
 use App\Models\User;
 use Carbon\Carbon;
 use Faker\Factory;
@@ -164,5 +172,24 @@ class CertificateTest extends TestCase
         dump('Restore ' . $certificate->id);
         dump('Amount of certificates in bin after restore ' . Certificate::onlyTrashed()->count());
         $this->assertTrue(Certificate::onlyTrashed()->find($certificate->id) == null);
+    }
+
+    /** @test */
+    public function the_certificate_exits_on_owner_profile()
+    {
+        //Arrange
+        $this->withoutMiddleware();
+        $user = User::all()->where('email', '=', 'admin@local')->first();
+        $certificate = Certificate::with('profile')->first();
+        $profile = $certificate->profile;
+
+        $response = $this->actingAs($user)
+            ->get(route('profiles.getProfile', $certificate->profile));
+        $response->assertSee($certificate->name);
+        $response->assertSee($certificate->achievement_date);
+        $response->assertSee($certificate->link);
+        $response->assertSee($certificate->description);
+        $response->assertSee($profile->first_name);
+        $response->assertSee($profile->surname);
     }
 }
