@@ -20,14 +20,4 @@ class LanguageTest extends TestCase
 
         $response->assertStatus(200);
     }
-
-    public function createLanguage()
-    {
-        $language = Language::create([
-            'name' => 'Assembler'
-        ]);
-
-        $this->ass
-
-    }
 }
