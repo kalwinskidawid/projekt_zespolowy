@@ -36,9 +36,11 @@
                         <div class="profile mr-3">
                             <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
                                 alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                            @if($canEdit)
                             <a id="editProfile" class="btn btn-outline-dark btn-sm btn-block text-capitalize">
                                 {{ __('translations.labels.profile.edit') }}
                             </a>
+                            @endif
                         </div>
                         <div class="media-body mb-5 text-white">
                             <h4 class="mt-0 mb-0 text-capitalize">{{ $profile->first_name }} {{ $profile->surname }}</h4>
@@ -62,10 +64,13 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.schools') }}</h5>
+                        @if($canEdit)
                         <a class="btn btn-link text-muted" id="button-add-school">
                             {{ __('translations.labels.create') }} </a>
+                        @endif
                     </div>
                     <div class="card card-body">
+                        @if($canEdit)
                         <div class="row border-bottom d-none" id="add-school">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
@@ -107,6 +112,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         <div id="school-list">
                         @foreach ($schools as $school)
                         <div id="school-id-{{$school->id}}">
@@ -116,6 +122,7 @@
                                     <div>{{ $school->start_date }} - {{ $school->end_date }}</div>
                                     <div>{{ $school->schoolType->name }}</div>
                                 </div>
+                                @if($canEdit)
                                 <div class="p-2">
                                     <a class="btn" onclick="updateSchool({{ $school->id }})">
                                         <i class="bi bi-pencil-square"></i>
@@ -124,6 +131,7 @@
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -133,10 +141,13 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.career') }}</h5>
+                        @if($canEdit)
                         <a class="btn btn-link text-muted text-capitalize"
                             id="button-add-career">{{ __('translations.labels.create') }}</a>
+                        @endif
                     </div>
                     <div class="card card-body">
+                        @if($canEdit)
                         <div class="row border-bottom d-none" id="add-career">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
@@ -174,6 +185,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         <div id="career-list">
                         @foreach ($careers as $career)
                         <div id="career-id-{{$career->id}}">
@@ -183,6 +195,7 @@
                                     <div>{{ $career->start_date }} - {{ $career->end_date }}</div>
                                     <div>{{ $career->description }}</div>
                                 </div>
+                                @if($canEdit)
                                 <div class="p-2">
                                     <a class="btn" onclick="updateCareer({{ $career->id }})">
                                         <i class="bi bi-pencil-square"></i>
@@ -191,6 +204,7 @@
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -200,10 +214,13 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.skills') }}</h5>
-                        <a class="btn btn-link text-muted text-capitalize"
+                        @if($canEdit)
+                            <a class="btn btn-link text-muted text-capitalize"
                             id="button-add-skills">{{ __('translations.labels.create') }}</a>
+                        @endif
                     </div>
                     <div class="card card-body">
+                        @if($canEdit)
                         <div class="row border-bottom d-none" id="add-skill">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
@@ -241,6 +258,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         <div id="skill-list">
                         @foreach ($skills as $skill)
                         <div id="skill-id-{{$skill->id}}">
@@ -249,6 +267,7 @@
                                     {{ $skill->technology->name }}
                                     <div>{{ $skill->level->name }}</div>
                                 </div>
+                                @if($canEdit)
                                 <div class="p-2">
                                     <a class="btn" onclick="updateSkill({{ $skill->id }})">
                                         <i class="bi bi-pencil-square"></i>
@@ -257,6 +276,7 @@
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -266,10 +286,13 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.certificates') }}</h5>
-                        <a class="btn btn-link text-muted text-capitalize"
+                        @if($canEdit)
+                            <a class="btn btn-link text-muted text-capitalize"
                             id="button-add-certificates">{{ __('translations.labels.create') }}</a>
+                        @endif
                     </div>
                     <div class="card card-body">
+                        @if($canEdit)
                         <div class="row border-bottom d-none" id="add-certificates">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
@@ -314,6 +337,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         <div id="certificate-list">
                             @foreach ($certificates as $certificate)
                                 <div id="certificate-id-{{$certificate->id}}">
@@ -323,6 +347,7 @@
                                             <div>{{ $certificate->achievement_date }}</div>
                                             <div>{{ $certificate->description }}</div>
                                         </div>
+                                        @if($canEdit)
                                         <div class="p-2">
                                             <a class="btn" onclick="updateCertificate({{ $certificate->id }})">
                                                 <i class="bi bi-pencil-square"></i>
@@ -331,6 +356,7 @@
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
@@ -340,10 +366,13 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between bg-light">
                         <h5 class="mb-0 text-capitalize">{{ __('translations.attributes.profile.languages') }}</h5>
-                        <a class="btn btn-link text-muted text-capitalize"
+                        @if($canEdit)
+                            <a class="btn btn-link text-muted text-capitalize"
                             id="button-add-languages">{{ __('translations.labels.create') }}</a>
+                        @endif
                     </div>
                     <div class="card card-body">
+                        @if($canEdit)
                         <div class="row border-bottom d-none" id="add-language">
                             <div class="col-sm-10 ">
                                 <div class="row mb-3">
@@ -381,6 +410,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         <div id="language-list">
                         @foreach ($knownLanguages as $knownLanguage)
                          <div id="language-id-{{$knownLanguage->id}}">
@@ -390,6 +420,7 @@
                                     <div>{{ $knownLanguage->level->name }}</div>
 
                                 </div>
+                                @if($canEdit)
                                 <div class="p-2">
                                     <a class="btn" onclick="updateLanguage({{ $knownLanguage->id }})">
                                         <i class="bi bi-pencil-square"></i>
@@ -398,6 +429,7 @@
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                          </div>
                         @endforeach

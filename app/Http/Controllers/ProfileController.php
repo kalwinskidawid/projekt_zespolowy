@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $levels = Level::orderBy('name')->get();
         $schoolList = SchoolType::orderBy('name')->get();
         $languageList = Language::orderBy('name')->get();
-
+        $canEdit = ($profile->user->id == optional(Auth::user())->id) || optional(Auth::user())->isAdmin();
         return view(
             'profiles.index',
             compact("careers",
@@ -52,7 +52,8 @@ class ProfileController extends Controller
                 "technologies",
                 "levels",
                 "schoolList",
-                "languageList")
+                "languageList",
+                "canEdit")
         );
     }
 
