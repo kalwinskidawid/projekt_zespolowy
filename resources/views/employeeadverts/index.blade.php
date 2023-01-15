@@ -13,9 +13,11 @@
         <h1>{{ __('translations.headers.employeeadverts')  }}</h1>
 
         <div class="d-flex flex-row-reverse mb-4">
+            @hasanyrole('pracownik|admin')
             <a href=" {{ route('employeeadverts.create') }} " type="button" class="btn btn-primary" role="button">
                 {{ __('translations.labels.create') }}
             </a>
+            @endhasanyrole
         </div>
 
         <div class="table-container table-responsive">
